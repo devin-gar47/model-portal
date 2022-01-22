@@ -79,8 +79,7 @@ const Home: NextPage<{}, {}> = () => {
     <div className="flex">
       <SideNav />
 
-      <div className="flex flex-col items-center h-screen w-screen overflow-y-auto mb-8">
-
+      <div className="flex flex-col items-center w-screen ml-28">
         <SportsTable columns={columns} data={data} />
         <SportsTable columns={columns} data={data} />
         <SportsTable columns={columns} data={data} />
