@@ -12,7 +12,7 @@ const SportsTable: React.FC<Props> = ({columns, data}) => {
     useTable({ columns, data })
     
     return (
-        <div className="mt-4">
+        <div className="my-4">
           <table {...getTableProps()} className='border-white shadow-xl bg-white-200'>
             <thead className='bg-blue-600 text-white shadow-md'>
               {
