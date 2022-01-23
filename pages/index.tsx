@@ -1,9 +1,12 @@
 import type { NextPage } from 'next'
 import { useMemo } from 'react'
+import { Provider } from 'react-redux'
 import { Column, useTable } from 'react-table'
 import SideNav from '../components/SideNav'
 import SportsTable from '../components/SportsTable'
 import { ColumnType, DataType } from '../utils/types/types'
+import { store } from '../redux/store'
+
 
 const Home: NextPage<{}, {}> = () => {
 
@@ -76,6 +79,7 @@ const Home: NextPage<{}, {}> = () => {
 
 
   return (
+    <Provider store={store}>
     <div className="flex">
       <SideNav />
 
@@ -87,6 +91,7 @@ const Home: NextPage<{}, {}> = () => {
 
       </div>
     </div>
+    </Provider>
   )
 }
 
