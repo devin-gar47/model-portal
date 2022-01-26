@@ -5,15 +5,19 @@ import { ColumnType, DataType } from '../utils/types/types'
 interface Props {
     columns: Column<ColumnType>[];
     data: readonly ColumnType[];
+    name: string;
+    timeline: string;
 }
 
-const SportsTable: React.FC<Props> = ({columns, data}) => {
+const SportsTable: React.FC<Props> = ({columns, data, name, timeline}) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data })
     
     return (
         <div className="my-4">
-          <table {...getTableProps()} className='border-white shadow-xl bg-white-200'>
+          <h3 className='text-3xl'>{name}</h3>
+          <p className='text-base'>{timeline}</p>
+          <table {...getTableProps()} className='border-white shadow-xl bg-white'>
             <thead className='bg-blue-600 text-white shadow-md'>
               {
                 // Loop over the header rows
