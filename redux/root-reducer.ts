@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import testReducer from './reducers/testreducer';
+import { combineReducers } from 'redux'
+import baseballHomeNonDivision2017 from './reducers/baseballHomeNonDivision2017'
 
 const rootReducer = combineReducers({
-    test: testReducer,
-});
+  baseballHomeNonDivision2017,
+})
 
-export default rootReducer;
+export default rootReducer
