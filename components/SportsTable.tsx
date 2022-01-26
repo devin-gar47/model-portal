@@ -13,7 +13,7 @@ const SportsTable: React.FC<Props> = ({columns, data}) => {
     
     return (
         <div className="my-4">
-          <table {...getTableProps()} className='border-white shadow-xl bg-white-200'>
+          <table {...getTableProps()} className='border-white shadow-xl bg-white'>
             <thead className='bg-blue-600 text-white shadow-md'>
               {
                 // Loop over the header rows
