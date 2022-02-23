@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { useAppSelector } from '../utils/types/reduxHookTypes'
-import { ColumnType, DataType } from '../utils/types/types'
+import { useAppSelector } from '../../utils/types/reduxHookTypes'
+import { ColumnType, DataType } from '../../utils/types/types'
 import SideNav from './SideNav'
 import SportsTable from './SportsTable'
 import { Column } from 'react-table'

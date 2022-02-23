@@ -1,6 +1,6 @@
 import React from 'react'
 import { Column, useTable } from 'react-table'
-import { ColumnType } from '../utils/types/types'
+import { ColumnType } from '../../utils/types/types'
 import EditableCell from './table/EditableCell'
 
 interface Props {
