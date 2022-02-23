@@ -5,13 +5,16 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "format": "npx prettier --write ./src",
+        "pre-push": "npx prettier --write ./src && git add ."
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.7.1",
         "@types/react-table": "^7.7.9",
         "babel-plugin-transform-define": "^2.0.1",
         "next": "^12.1.0",
+        "ramda": "^0.28.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-icons": "^4.3.1",
@@ -22,6 +25,7 @@
     },
     "devDependencies": {
         "@types/node": "17.0.10",
+        "@types/ramda": "^0.27.64",
         "@types/react": "17.0.38",
         "autoprefixer": "^10.4.2",
         "eslint": "8.7.0",

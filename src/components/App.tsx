@@ -1,15 +1,12 @@
 import React, { useMemo } from 'react'
-import { useAppSelector } from '../../utils/types/reduxHookTypes'
 import { ColumnType, DataType } from '../../utils/types/types'
 import SideNav from './SideNav'
 import SportsTable from './SportsTable'
 import { Column } from 'react-table'
+import { useAppSelector } from '../redux/hooks'
 
 const App: React.FC = () => {
-    const baseballData = useAppSelector(
-        (store) => store.baseballHomeNonDivision2017
-    )
-    const myData = useMemo<DataType[]>(() => baseballData, [])
+    const baseballData = useAppSelector((store) => store.baseballHomeNonDivision2017)
 
     const data = useMemo<DataType[]>(
         () => [
@@ -84,7 +81,7 @@ const App: React.FC = () => {
             <div className="flex flex-col items-center w-screen ml-28">
                 <SportsTable
                     columns={columns}
-                    data={myData}
+                    data={baseballData}
                     name="O/U 2.5 1H RUNS - HOME TEAM"
                     timeline="since 2017 - Jul 26st, 2021"
                 />

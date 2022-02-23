@@ -4,9 +4,11 @@ import ReadValue from './ReadValue'
 
 interface Props {
     value: string
+    row: any // React-Table does not have proper typescript types as of February 2022
+    column: any // React-Table does not have proper typescript types as of February 2022
 }
 
-const EditableCell: React.FC<Props> = ({ value: initialValue }) => {
+const EditableCell: React.FC<Props> = ({ value: initialValue, row: { index }, column: { id } }) => {
     const [value, setValue] = useState<string>(initialValue)
     const [isEditModeActive, setIsEditModeActive] = useState<boolean>(false)
 
@@ -18,6 +20,8 @@ const EditableCell: React.FC<Props> = ({ value: initialValue }) => {
         <EditValue
             initialValue={initialValue}
             setIsEditModeActive={setIsEditModeActive}
+            rowIndex={index}
+            columnID={id}
         />
     ) : (
         <ReadValue value={value} setIsEditModeActive={setIsEditModeActive} />
