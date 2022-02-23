@@ -10,13 +10,11 @@ import { useAppSelector } from '../utils/types/reduxHookTypes'
 import App from '../components/App'
 
 const Home: NextPage<{}, {}> = () => {
-
-
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  )
+    return (
+        <Provider store={store}>
+            <App />
+        </Provider>
+    )
 }
 
 export default Home
