@@ -1,4 +1,4 @@
-import { DataType } from '../utils/types/types'
+import { DataType } from '../../utils/types/types'
 
 const initialState: DataType[] = [
     {

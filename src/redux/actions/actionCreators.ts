@@ -1,5 +1,5 @@
 import { Action } from '@reduxjs/toolkit'
-import { DataType } from '../../utils/types/types'
+import { DataType } from '../../../utils/types/types'
 import * as actionTypes from './actionTypes'
 
 function updateTable(data: DataType) {
