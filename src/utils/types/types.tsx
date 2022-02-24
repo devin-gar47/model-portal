@@ -9,7 +9,6 @@ interface DataType {
     dogRecord: string
     notes: string
 }
-;[]
 
 interface ColumnType {
     ou: string

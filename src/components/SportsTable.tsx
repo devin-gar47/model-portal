@@ -1,6 +1,7 @@
 import React from 'react'
 import { Column, useTable } from 'react-table'
-import { ColumnType } from '../../utils/types/types'
+import { getCellBackgroundColor } from '../utils/table'
+import { ColumnType } from '../utils/types/types'
 import EditableCell from './table/EditableCell'
 
 interface Props {
@@ -61,7 +62,14 @@ const SportsTable: React.FC<Props> = ({ columns, data, name, timeline }) => {
                                         row.cells.map((cell) => {
                                             // Apply the cell props
                                             return (
-                                                <td {...cell.getCellProps()} className="px-8 py-2">
+                                                <td
+                                                    {...cell.getCellProps()}
+                                                    className={`px-8 py-2`}
+                                                    style={{
+                                                        backgroundColor: `rgba(${getCellBackgroundColor(cell)}, 0.6)`,
+                                                        opacity: 0.9,
+                                                    }}
+                                                >
                                                     {
                                                         // Render the cell contents
                                                         cell.render('Cell')

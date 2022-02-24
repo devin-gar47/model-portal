@@ -1,6 +1,6 @@
 import { Action, AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { clone } from 'ramda'
-import { DataType } from '../../../utils/types/types'
+import { DataType } from '../../utils/types/types'
 import { initialState } from '../initialState'
 
 interface payloadData {
