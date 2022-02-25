@@ -6,7 +6,11 @@ interface IReadValueProps {
 }
 
 const ReadValue: React.FC<IReadValueProps> = ({ value, setIsEditModeActive }) => {
-    return <p onClick={() => setIsEditModeActive(true)}>{value}</p>
+    return (
+        <p data-testid="read-only-cell-value" onClick={() => setIsEditModeActive(true)}>
+            {value}
+        </p>
+    )
 }
 
 export default ReadValue
