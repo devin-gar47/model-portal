@@ -12,64 +12,92 @@ const App: React.FC = () => {
         () => [
             {
                 ou: 'Hello',
-                record: 'World',
-                winPercentage: '0%',
-                favRecord: '0-0 / 0%',
-                overFavs: '0-0 / 0%',
-                dogRecord: '0-0 / 0%',
-                notes: '',
+                g1FavTwoPointFive: '0-0 / 0%',
+                g1FavOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                g1DogTwoPointFive: '0-0 / 0%',
+                g1DogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                favTwoPointFive: '0-0 / 0%',
+                favOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                dogTwoPointFive: '0-0 / 0% on o2.5',
+                dogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                homeMLTwoPointFive: '0-0 / 0% on o2.5',
+                homeMLThreePointFive: '0-0 / 0% on o3.5',
             },
             {
                 ou: 'Hello',
-                record: 'World',
-                winPercentage: '0%',
-                favRecord: '0-0 / 0%',
-                overFavs: '0-0 / 0%',
-                dogRecord: '0-0 / 0%',
-                notes: '',
+                g1FavTwoPointFive: '0-0 / 0%',
+                g1FavOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                g1DogTwoPointFive: '0-0 / 0%',
+                g1DogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                favTwoPointFive: '0-0 / 0%',
+                favOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                dogTwoPointFive: '0-0 / 0% on o2.5',
+                dogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                homeMLTwoPointFive: '0-0 / 0% on o2.5',
+                homeMLThreePointFive: '0-0 / 0% on o3.5',
             },
             {
                 ou: 'Hello',
-                record: 'World',
-                winPercentage: '0%',
-                favRecord: '0-0 / 0%',
-                overFavs: '0-0 / 0%',
-                dogRecord: '0-0 / 0%',
-                notes: '',
+                g1FavTwoPointFive: '0-0 / 0%',
+                g1FavOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                g1DogTwoPointFive: '0-0 / 0%',
+                g1DogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                favTwoPointFive: '0-0 / 0%',
+                favOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                dogTwoPointFive: '0-0 / 0% on o2.5',
+                dogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
+                homeMLTwoPointFive: '0-0 / 0% on o2.5',
+                homeMLThreePointFive: '0-0 / 0% on o3.5',
             },
         ],
         []
     )
 
-    const columns = useMemo<Column<ColumnType>[]>(
+    const columns = useMemo<Column<DataType>[]>(
         () => [
             {
                 Header: 'O/U',
                 accessor: 'ou', // accessor is the "key" in the data
             },
             {
-                Header: 'Record',
-                accessor: 'record', // accessor is the "key" in the data
+                Header: 'G1 FAV o2.5',
+                accessor: 'g1FavTwoPointFive', // accessor is the "key" in the data
             },
             {
-                Header: 'Win %',
-                accessor: 'winPercentage', // accessor is the "key" in the data
+                Header: 'G1 FAV o1.5/3.5',
+                accessor: 'g1FavOnePointFiveThreePointFive', // accessor is the "key" in the data
             },
             {
-                Header: 'FAV Record / Win %',
-                accessor: 'favRecord', // accessor is the "key" in the data
+                Header: 'G1 DOG o2.5',
+                accessor: 'g1DogTwoPointFive', // accessor is the "key" in the data
             },
             {
-                Header: 'o3.5 for favs',
-                accessor: 'overFavs', // accessor is the "key" in the data
+                Header: 'G1 DOG o1.5/3.5',
+                accessor: 'g1DogOnePointFiveThreePointFive', // accessor is the "key" in the data
             },
             {
-                Header: 'DOG Record / Win %',
-                accessor: 'dogRecord', // accessor is the "key" in the data
+                Header: 'FAV o2.5',
+                accessor: 'favTwoPointFive', // accessor is the "key" in the data
             },
             {
-                Header: 'Notes',
-                accessor: 'notes',
+                Header: 'FAV o1.5/3.5',
+                accessor: 'favOnePointFiveThreePointFive',
+            },
+            {
+                Header: 'DOG o2.5',
+                accessor: 'dogTwoPointFive',
+            },
+            {
+                Header: 'DOG o1.5/3.5',
+                accessor: 'dogOnePointFiveThreePointFive',
+            },
+            {
+                Header: 'HOME ML (-200+) on o2.5',
+                accessor: 'homeMLTwoPointFive',
+            },
+            {
+                Header: 'HOME ML (-200) on o3.5',
+                accessor: 'homeMLThreePointFive',
             },
         ],
         []
