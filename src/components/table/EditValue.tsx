@@ -1,4 +1,4 @@
-import { divide } from 'ramda'
+import divide from 'ramda/src/divide'
 import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { useAppDispatch } from '../../redux/hooks'
 import { updateData } from '../../redux/reducers/baseballHomeNonDivision2017'
@@ -13,8 +13,7 @@ interface Props {
 
 const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive }) => {
     const recordRef = useRef<HTMLInputElement>(null)
-    const [value, setValue] = useState<string>(initialValue)
-    const recordInfoArr = value.split('/')
+    const recordInfoArr = initialValue.split('/')
     const readOnlyPercentage = recordInfoArr[1] ? recordInfoArr[1].trim() : '0%'
     const recordArr = recordInfoArr[0].split('-')
     const winNum = recordArr[0] ? recordArr[0].trim() : '0'
