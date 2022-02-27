@@ -7,9 +7,6 @@ orbs:
   node: circleci/node@4.7
 
 jobs:
-
-  - build:
-    run: 
   - node/test:
       version: '16.10'
       pkg-manager: npm
