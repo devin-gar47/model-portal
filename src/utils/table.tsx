@@ -6,4 +6,33 @@ const getCellBackgroundColor = (cell: any): string => {
     } else return '22, 163, 74'
 }
 
-export { getCellBackgroundColor }
+function filterInt(value: string) {
+    if (/^[-+]?(\d+|Infinity)$/.test(value)) {
+        return Number(value)
+    } else {
+        return NaN
+    }
+}
+
+const isValidRecordInfo = (str: string): boolean => {
+    if (!str?.trim()) return false
+
+    const hyphenCount = (str.match(/-/g) || []).length
+    if (hyphenCount !== 1) return false
+
+    const recordInfoArr = str
+        .trim()
+        .split('-')
+        .filter((element) => element)
+    if (recordInfoArr.length !== 2) return false
+
+    const winNum = recordInfoArr[0].trim()
+    const lossNum = recordInfoArr[1].trim()
+    console.log(winNum, lossNum)
+
+    if (isNaN(filterInt(winNum)) || isNaN(filterInt(lossNum))) return false
+
+    return true
+}
+
+export { getCellBackgroundColor, isValidRecordInfo }
