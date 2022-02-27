@@ -8,7 +8,7 @@
         "lint": "next lint",
         "test": "jest -c jest.config.ts --coverage --collectCoverageFrom='**/src/**/*.{js,jsx,ts,tsx}' --env=jsdom",
         "format": "npx prettier --write ./src",
-        "pre-push": "npx prettier --write ./src && git add ."
+        "pre-push": "npx prettier --write ./src && npm run test && git add . && git status"
     },
     "dependencies": {
         "@babel/runtime": "^7.17.2",

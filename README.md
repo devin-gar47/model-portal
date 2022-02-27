@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). [![CircleCI](https://circleci.com/gh/devin-gar47/model-portal/tree/main.svg?style=svg)](https://circleci.com/gh/devin-gar47/model-portal/tree/main)
 
 ## Getting Started
 
