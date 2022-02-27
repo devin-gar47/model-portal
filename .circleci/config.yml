@@ -21,13 +21,10 @@ jobs:
           key: v1-deps-{{ checksum "package-lock.json" }}
           paths: 
             - node_modules   
-  unit-tests:
-      version: '16.10'
-      pkg-manager: npm
-      steps:
-        - run:
-            name: test
-            command: npm run test
+      - run:
+          name: test
+          command: npm run test
+       
 
 
 # Invoke jobs via workflows
@@ -37,5 +34,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-      - unit-tests
 
