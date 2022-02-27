@@ -4,7 +4,7 @@ describe('Table utility functions', () => {
     it('should return true because string is valid', () => {
         expect(isValidRecordInfo('0-0')).toBe(true)
         expect(isValidRecordInfo('   0-0     ')).toBe(true)
-        expect(isValidRecordInfo('   0   -  0     ')).toBe(true)
+        expect(isValidRecordInfo('   0   -  0      ')).toBe(true)
     })
 
     it('should return false because string is invalid', () => {
