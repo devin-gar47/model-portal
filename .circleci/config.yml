@@ -22,9 +22,7 @@ jobs:
     docker:
       - image: node:16-alpine
     steps:
-      - run:
-        name: Application Unit Tests
-        command: npm run test
+      - run: npm run test
        
 
 
