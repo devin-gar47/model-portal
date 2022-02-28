@@ -20,7 +20,7 @@ jobs:
           name: Application Build 
           command: npm run build
       - store_artifacts:
-          path: ./build
+          path: .
   test:
     docker:
       - image: node:16-alpine
