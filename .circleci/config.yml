@@ -33,7 +33,5 @@ workflows:
   sample:
     jobs:
       - build
-      - test:
-        requires:
-          - build
+      - test
 
