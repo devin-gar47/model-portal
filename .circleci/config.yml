@@ -29,8 +29,8 @@ jobs:
       - checkout
       - run: 
           command: |
-          ls .
-          npm run test
+            ls .
+            npm run test
        
 
 
