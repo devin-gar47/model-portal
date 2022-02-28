@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-test:
+  test:
     docker:
       - image: node:16-alpine
     working_directory: ~/app
