@@ -22,6 +22,7 @@ jobs:
     docker:
       - image: node:16-alpine
     steps:
+      - checkout
       - run: npm run test
        
 
@@ -33,7 +34,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-      - test:
-        requires:
-          - build
+      - test
 
