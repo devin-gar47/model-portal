@@ -18,11 +18,11 @@ jobs:
       - run:
           name: Application Build 
           command: npm run build
-  test:
-    steps:
-      - run:
-        name: Application Unit Tests
-        command: npm run test
+  # test:
+  #   steps:
+  #     - run:
+  #       name: Application Unit Tests
+  #       command: npm run test
        
 
 
