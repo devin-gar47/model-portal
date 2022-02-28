@@ -18,8 +18,9 @@ jobs:
       - run:
           name: Application Build 
           command: npm run build
-
   test:
+    docker:
+      - image: node:16-alpine
     steps:
       - run:
         name: Application Unit Tests
