@@ -9,6 +9,8 @@ import { Column } from 'react-table'
 const App: React.FC = () => {
     const baseballHomeNonDivisionData = useAppSelector((store) => store.baseballHomeNonDivision2017)
     const baseballHomeDivisionData = useAppSelector((store) => store.baseballHomeDivision2017)
+    const baseballHomeNonDivision2022Data = useAppSelector((store) => store.baseballHomeNonDivision2022)
+    const baseballHomeDivision2022Data = useAppSelector((store) => store.baseballHomeDivision2022)
 
     const data = useMemo<DataType[]>(
         () => [
@@ -123,15 +125,15 @@ const App: React.FC = () => {
                 />
                 <SportsTable
                     columns={columns}
-                    data={data}
-                    tableName="DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM"
-                    timeline="2017 - 2021 as of July 26st"
+                    data={baseballHomeNonDivision2022Data}
+                    tableName={BASEBALL_TABLE_NAMES.baseballHomeNonDivision2022}
+                    timeline="2022 (Current Season)"
                 />
                 <SportsTable
                     columns={columns}
-                    data={data}
-                    tableName="DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM"
-                    timeline="2021 as of July 26th"
+                    data={baseballHomeDivision2022Data}
+                    tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision2022}
+                    timeline="2022 (Current Season)"
                 />
             </div>
         </div>

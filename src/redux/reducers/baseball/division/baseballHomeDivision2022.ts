@@ -4,11 +4,11 @@ import { BASEBALL_TABLE_NAMES } from '../../../../utils/enums'
 import { DataType, PayloadData } from '../../../../utils/types/types'
 import { initialState } from '../../../initialState'
 
-export const baseballHomeDivision2017v2 = createSlice({
-    name: BASEBALL_TABLE_NAMES.baseballHomeDivision,
+export const baseballHomeDivision2022 = createSlice({
+    name: BASEBALL_TABLE_NAMES.baseballHomeDivision2022,
     initialState,
     reducers: {
-        updateBaseballHomeDivisionData: (state: DataType[], action: PayloadAction<PayloadData>) => {
+        updateBaseballHomeDivision2022Data: (state: DataType[], action: PayloadAction<PayloadData>) => {
             const newObj = clone(state)
             const { rowIndex, columnID, value } = action.payload
             const obj = newObj[rowIndex]
@@ -20,6 +20,6 @@ export const baseballHomeDivision2017v2 = createSlice({
     },
 })
 
-export const { updateBaseballHomeDivisionData } = baseballHomeDivision2017v2.actions
+export const { updateBaseballHomeDivision2022Data } = baseballHomeDivision2022.actions
 
-export default baseballHomeDivision2017v2.reducer
+export default baseballHomeDivision2022.reducer

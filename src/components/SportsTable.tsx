@@ -18,6 +18,10 @@ function renderTableName(tableName: string): string {
             return 'O/U 2.5 1H RUNS - HOME TEAM'
         case BASEBALL_TABLE_NAMES.baseballHomeDivision:
             return 'DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM'
+        case BASEBALL_TABLE_NAMES.baseballHomeNonDivision2022:
+            return '2022 O/U 2.5 1H RUNS - HOME TEAM'
+        case BASEBALL_TABLE_NAMES.baseballHomeDivision2022:
+            return 'DIVISION GAMES - 2022 O/U 2.5 1H RUNS - HOME TEAM'
         default:
             return ''
     }
