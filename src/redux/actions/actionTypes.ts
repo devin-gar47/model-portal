@@ -1,3 +1,0 @@
-const UPDATE_TABLE = 'UPDATE_TABLE'
-
-export { UPDATE_TABLE }
