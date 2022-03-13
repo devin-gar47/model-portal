@@ -1,12 +1,14 @@
 import React, { useMemo } from 'react'
-import { ColumnType, DataType } from '../utils/types/types'
+import { DataType } from '../utils/types/types'
 import SideNav from './SideNav'
 import SportsTable from './SportsTable'
-import { Column } from 'react-table'
 import { useAppSelector } from '../redux/hooks'
+import { BASEBALL_TABLE_NAMES } from '../utils/enums'
+import { Column } from 'react-table'
 
 const App: React.FC = () => {
-    const baseballData = useAppSelector((store) => store.baseballHomeNonDivision2017)
+    const baseballHomeNonDivisionData = useAppSelector((store) => store.baseballHomeNonDivision2017)
+    const baseballHomeDivisionData = useAppSelector((store) => store.baseballHomeDivision2017)
 
     const data = useMemo<DataType[]>(
         () => [
@@ -109,26 +111,26 @@ const App: React.FC = () => {
             <div className="flex flex-col items-center w-screen ml-28">
                 <SportsTable
                     columns={columns}
-                    data={baseballData}
-                    name="O/U 2.5 1H RUNS - HOME TEAM"
-                    timeline="since 2017 - Jul 26st, 2021"
+                    data={baseballHomeNonDivisionData}
+                    tableName={BASEBALL_TABLE_NAMES.baseballHomeNonDivision}
+                    timeline="2017-2021"
+                />
+                <SportsTable
+                    columns={columns}
+                    data={baseballHomeDivisionData}
+                    tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision}
+                    timeline="2017-2021"
                 />
                 <SportsTable
                     columns={columns}
                     data={data}
-                    name="O/U 2.5 1H RUNS - HOME TEAM"
-                    timeline="2021- as of July 26st"
-                />
-                <SportsTable
-                    columns={columns}
-                    data={data}
-                    name="DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM"
+                    tableName="DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM"
                     timeline="2017 - 2021 as of July 26st"
                 />
                 <SportsTable
                     columns={columns}
                     data={data}
-                    name="DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM"
+                    tableName="DIVISION GAMES - O/U 2.5 1H RUNS - HOME TEAM"
                     timeline="2021 as of July 26th"
                 />
             </div>

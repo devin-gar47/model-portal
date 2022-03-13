@@ -28,4 +28,10 @@ interface ColumnType {
     homeMLThreePointFive: string
 }
 
-export type { DataType, ColumnType }
+interface PayloadData {
+    rowIndex: number
+    columnID: string
+    value: string
+}
+
+export type { DataType, ColumnType, PayloadData }

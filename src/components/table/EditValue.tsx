@@ -1,17 +1,19 @@
 import divide from 'ramda/src/divide'
 import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import { useAppDispatch } from '../../redux/hooks'
-import { updateData } from '../../redux/reducers/baseballHomeNonDivision2017'
+import { BASEBALL_TABLE_NAMES } from '../../utils/enums'
 import { isValidRecordInfo } from '../../utils/table'
+import { updateBaseballTable } from '../../utils/table-functions'
 
 interface Props {
     initialValue: string
     rowIndex: number
     columnID: string
     setIsEditModeActive: (value: boolean | ((prevVar: boolean) => boolean)) => void
+    tableName: string
 }
 
-const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive }) => {
+const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive, tableName }) => {
     const recordRef = useRef<HTMLInputElement>(null)
     const recordInfoArr = initialValue.split('/')
     const readOnlyPercentage = recordInfoArr[1] ? recordInfoArr[1].trim() : '0%'
@@ -44,7 +46,7 @@ const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEdi
             columnID,
             value: finalString,
         }
-        dispatch(updateData(cellInfo))
+        updateBaseballTable(dispatch, tableName, cellInfo)
         setIsEditModeActive(false)
     }
 
