@@ -5,57 +5,14 @@ import SportsTable from './SportsTable'
 import { useAppSelector } from '../redux/hooks'
 import { BASEBALL_TABLE_NAMES } from '../utils/enums'
 import { Column } from 'react-table'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
 
 const App: React.FC = () => {
     const baseballHomeNonDivisionData = useAppSelector((store) => store.baseballHomeNonDivision2017)
     const baseballHomeDivisionData = useAppSelector((store) => store.baseballHomeDivision2017)
     const baseballHomeNonDivision2022Data = useAppSelector((store) => store.baseballHomeNonDivision2022)
     const baseballHomeDivision2022Data = useAppSelector((store) => store.baseballHomeDivision2022)
-
-    const data = useMemo<DataType[]>(
-        () => [
-            {
-                ou: 'Hello',
-                g1FavTwoPointFive: '0-0 / 0%',
-                g1FavOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                g1DogTwoPointFive: '0-0 / 0%',
-                g1DogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                favTwoPointFive: '0-0 / 0%',
-                favOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                dogTwoPointFive: '0-0 / 0% on o2.5',
-                dogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                homeMLTwoPointFive: '0-0 / 0% on o2.5',
-                homeMLThreePointFive: '0-0 / 0% on o3.5',
-            },
-            {
-                ou: 'Hello',
-                g1FavTwoPointFive: '0-0 / 0%',
-                g1FavOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                g1DogTwoPointFive: '0-0 / 0%',
-                g1DogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                favTwoPointFive: '0-0 / 0%',
-                favOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                dogTwoPointFive: '0-0 / 0% on o2.5',
-                dogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                homeMLTwoPointFive: '0-0 / 0% on o2.5',
-                homeMLThreePointFive: '0-0 / 0% on o3.5',
-            },
-            {
-                ou: 'Hello',
-                g1FavTwoPointFive: '0-0 / 0%',
-                g1FavOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                g1DogTwoPointFive: '0-0 / 0%',
-                g1DogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                favTwoPointFive: '0-0 / 0%',
-                favOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                dogTwoPointFive: '0-0 / 0% on o2.5',
-                dogOnePointFiveThreePointFive: '0-0 / 0% on o1.5',
-                homeMLTwoPointFive: '0-0 / 0% on o2.5',
-                homeMLThreePointFive: '0-0 / 0% on o3.5',
-            },
-        ],
-        []
-    )
 
     const columns = useMemo<Column<DataType>[]>(
         () => [
@@ -111,30 +68,41 @@ const App: React.FC = () => {
             <SideNav />
 
             <div className="flex flex-col items-center w-screen ml-28">
-                <SportsTable
-                    columns={columns}
-                    data={baseballHomeNonDivisionData}
-                    tableName={BASEBALL_TABLE_NAMES.baseballHomeNonDivision}
-                    timeline="2017-2021"
-                />
-                <SportsTable
-                    columns={columns}
-                    data={baseballHomeDivisionData}
-                    tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision}
-                    timeline="2017-2021"
-                />
-                <SportsTable
-                    columns={columns}
-                    data={baseballHomeNonDivision2022Data}
-                    tableName={BASEBALL_TABLE_NAMES.baseballHomeNonDivision2022}
-                    timeline="2022 (Current Season)"
-                />
-                <SportsTable
-                    columns={columns}
-                    data={baseballHomeDivision2022Data}
-                    tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision2022}
-                    timeline="2022 (Current Season)"
-                />
+                <Tabs>
+                    <TabList className="w-full">
+                        <Tab>Home</Tab>
+                        <Tab>Visitor</Tab>
+                    </TabList>
+                    <TabPanel>
+                        <SportsTable
+                            columns={columns}
+                            data={baseballHomeNonDivisionData}
+                            tableName={BASEBALL_TABLE_NAMES.baseballHomeNonDivision}
+                            timeline="2017-2021"
+                        />
+                        <SportsTable
+                            columns={columns}
+                            data={baseballHomeDivisionData}
+                            tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision}
+                            timeline="2017-2021"
+                        />
+                        <SportsTable
+                            columns={columns}
+                            data={baseballHomeNonDivision2022Data}
+                            tableName={BASEBALL_TABLE_NAMES.baseballHomeNonDivision2022}
+                            timeline="2022 (Current Season)"
+                        />
+                        <SportsTable
+                            columns={columns}
+                            data={baseballHomeDivision2022Data}
+                            tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision2022}
+                            timeline="2022 (Current Season)"
+                        />
+                    </TabPanel>
+                    <TabPanel>
+                        <h2>hello</h2>
+                    </TabPanel>
+                </Tabs>
             </div>
         </div>
     )
