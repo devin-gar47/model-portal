@@ -39,8 +39,11 @@ const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEdi
         const recordArr = record.split('-')
         const winNum = parseInt(recordArr[0])
         const lossNum = parseInt(recordArr[1])
+        const onSpread = initialValue.split('on')
         const percentage = divide(winNum, winNum + lossNum) * 100
-        const finalString = `${winNum}-${lossNum} / ${percentage.toFixed()}%`
+        const finalString = `${winNum}-${lossNum} / ${!isNaN(percentage) ? percentage.toFixed() : '0'}% ${
+            onSpread.length == 2 ? `on ${onSpread[1]}` : ''
+        }`
         const cellInfo = {
             rowIndex,
             columnID,
