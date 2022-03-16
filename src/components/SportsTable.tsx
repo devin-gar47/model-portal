@@ -118,7 +118,7 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
                                                 return (
                                                     <td
                                                         {...cell.getCellProps()}
-                                                        className={`px-8 py-2`}
+                                                        className={`px-8 py-2 text-sm max-w-max`}
                                                         style={{
                                                             backgroundColor: `rgba(${getCellBackgroundColor(
                                                                 cell

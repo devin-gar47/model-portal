@@ -64,10 +64,17 @@ const App: React.FC = () => {
         []
     )
     return (
-        <div className="flex">
-            <SideNav />
+        <div className="flex flex-col">
+            <nav className="flex justify-between p-2 bg-slate-500/50">
+                <h2 className="text-xl">Model Project</h2>
 
-            <div className="flex flex-col items-center w-screen ml-28">
+                <div>
+                    <span>Baseball</span> <span>Football</span>
+                </div>
+            </nav>
+            {/* <SideNav /> */}
+
+            <div className="flex flex-col items-center w-screen p-5">
                 <Tabs>
                     <TabList className="w-full">
                         <Tab>Home</Tab>
