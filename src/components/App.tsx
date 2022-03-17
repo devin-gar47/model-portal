@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { DataType } from '../utils/types/types'
+import { ColumnType, DataType } from '../utils/types/types'
 import SideNav from './SideNav'
 import SportsTable from './SportsTable'
 import { useAppSelector } from '../redux/hooks'
@@ -14,7 +14,7 @@ const App: React.FC = () => {
     const baseballHomeNonDivision2022Data = useAppSelector((store) => store.baseballHomeNonDivision2022)
     const baseballHomeDivision2022Data = useAppSelector((store) => store.baseballHomeDivision2022)
 
-    const columns = useMemo<Column<DataType>[]>(
+    const columns = useMemo<Column<ColumnType>[]>(
         () => [
             {
                 Header: 'O/U',
@@ -65,7 +65,7 @@ const App: React.FC = () => {
     )
     return (
         <div className="flex flex-col">
-            <nav className="flex justify-between p-2 bg-slate-500/50">
+            <nav className="flex justify-between p-2 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg">
                 <h2 className="text-xl">Model Project</h2>
 
                 <div>

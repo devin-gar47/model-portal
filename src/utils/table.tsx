@@ -1,3 +1,5 @@
+import { DataType, FullDataType } from './types/types'
+
 const getCellBackgroundColor = (cell: any): string => {
     const percentage = parseInt(cell?.value?.split('/')[1]?.split('%')[0])
     if (percentage <= 44) return '248, 113, 113'
@@ -35,4 +37,23 @@ const isValidRecordInfo = (str: string): boolean => {
     return true
 }
 
-export { getCellBackgroundColor, isValidRecordInfo }
+function addToInitialState(
+    initialState: DataType[],
+    year: number,
+    sport: string,
+    home: boolean,
+    division: boolean
+): DataType[] {
+    const newArr: DataType[] = initialState.map((obj: DataType): DataType => {
+        const newObj = { ...obj }
+        newObj.year = year
+        newObj.sport = sport
+        newObj.home = home
+        newObj.division = division
+        return newObj
+    })
+
+    return newArr
+}
+
+export { getCellBackgroundColor, isValidRecordInfo, addToInitialState }
