@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start": "next start -p $PORT",
         "lint": "next lint",
         "test": "jest -c jest.config.ts --coverage --collectCoverageFrom='**/src/**/*.{js,jsx,ts,tsx}' --env=jsdom",
         "format": "npx prettier --write ./src",
