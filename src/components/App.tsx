@@ -74,9 +74,9 @@ const App: React.FC = () => {
             </nav>
             {/* <SideNav /> */}
 
-            <div className="flex flex-col items-center w-screen p-5">
-                <Tabs>
-                    <TabList className="w-full">
+            <div className="flex flex-col items-center justify-center p-4">
+                <Tabs className="w-full flex flex-col items-center">
+                    <TabList className="w-full flex justify-center">
                         <Tab>Home</Tab>
                         <Tab>Visitor</Tab>
                     </TabList>
