@@ -111,7 +111,7 @@ const App: React.FC = () => {
                         />
                     </TabPanel>
                     <TabPanel>
-                        <h2>hello</h2>
+                        <h2>Coming soon!</h2>
                     </TabPanel>
                 </Tabs>
             </div>
