@@ -67,6 +67,7 @@ const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEdi
                 />{' '}
                 <span>/ {readOnlyPercentage}</span>
             </form>
+
             <small hidden={!isInvalid} className="text-xs">
                 Valid input must be in the form: 0-0
             </small>
