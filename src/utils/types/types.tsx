@@ -16,6 +16,7 @@ interface DataType {
     dogOnePointFiveThreePointFive: string
     homeMLTwoPointFive: string
     homeMLThreePointFive: string
+    ifRoadMLOnePointFive: string
 }
 
 interface FullDataType extends DataType {
@@ -37,6 +38,7 @@ interface ColumnType {
     dogOnePointFiveThreePointFive: string
     homeMLTwoPointFive: string
     homeMLThreePointFive: string
+    ifRoadMLOnePointFive: string
 }
 
 interface PayloadData {

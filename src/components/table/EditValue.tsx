@@ -14,7 +14,6 @@ interface Props {
 }
 
 const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive, tableName }) => {
-    const recordRef = useRef<HTMLInputElement>(null)
     const recordInfoArr = initialValue.split('/')
     const readOnlyPercentage = recordInfoArr[1] ? recordInfoArr[1].trim() : '0%'
     const recordArr = recordInfoArr[0].split('-')
@@ -22,11 +21,13 @@ const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEdi
     const lossNum = recordArr[1] ? recordArr[1].trim() : '0'
     const [record, setRecord] = useState<string>(winNum + '-' + lossNum)
     const [isInvalid, setIsInvalid] = useState<boolean>(false)
+    const [width, setWidth] = useState(recordInfoArr[0]?.trim().length)
     const dispatch = useAppDispatch()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
         e.preventDefault()
         isInvalid ? setIsInvalid(false) : null
+        setWidth(e.target.value.length)
         setRecord(e.target.value)
     }
 
@@ -53,19 +54,16 @@ const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEdi
         setIsEditModeActive(false)
     }
 
-    useEffect(() => {
-        recordRef?.current?.focus?.()
-    }, [recordRef])
-
     return (
         <>
             <form onSubmit={(e) => onSubmit(e)}>
                 <input
+                    autoFocus
                     value={record}
-                    ref={recordRef}
                     onBlur={(e) => onSubmit(e)}
                     onChange={(e) => handleChange(e)}
                     size={4}
+                    style={{ width: width + 0.5 + 'ch' }}
                 />{' '}
                 <span>/ {readOnlyPercentage}</span>
             </form>

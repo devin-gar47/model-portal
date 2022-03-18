@@ -60,6 +60,10 @@ const App: React.FC = () => {
                 Header: 'HOME ML (-200) on o3.5',
                 accessor: 'homeMLThreePointFive',
             },
+            {
+                Header: 'IF ROAD ML is (-200+), home dog o1.5 is:',
+                accessor: 'ifRoadMLOnePointFive',
+            },
         ],
         []
     )
@@ -75,12 +79,12 @@ const App: React.FC = () => {
             {/* <SideNav /> */}
 
             <div className="flex flex-col items-center justify-center p-4">
-                <Tabs className="w-full flex flex-col items-center">
-                    <TabList className="w-full flex justify-center">
+                <Tabs className="flex flex-col items-center w-full">
+                    <TabList className="w-100 flex justify-center">
                         <Tab>Home</Tab>
                         <Tab>Visitor</Tab>
                     </TabList>
-                    <TabPanel>
+                    <TabPanel className="w-full">
                         <SportsTable
                             columns={columns}
                             data={baseballHomeNonDivisionData}
