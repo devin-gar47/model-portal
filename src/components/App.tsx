@@ -7,6 +7,7 @@ import { BASEBALL_TABLE_NAMES } from '../utils/enums'
 import { Column } from 'react-table'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
+import ReadOnly from './table/ReadOnly'
 
 const App: React.FC = () => {
     const baseballHomeNonDivisionData = useAppSelector((store) => store.baseballHomeNonDivision2017)
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             {
                 Header: 'O/U',
                 accessor: 'ou', // accessor is the "key" in the data
+                Cell: ReadOnly,
             },
             {
                 Header: 'G1 FAV o2.5',
