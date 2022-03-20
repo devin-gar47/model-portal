@@ -18,9 +18,13 @@ export const baseballHomeDivision2017v2 = createSlice({
             obj[key] = value
             return newObj
         },
+        updateBaseballHomeDivisionFullData: (state: DataType[], action: PayloadAction<any>) => {
+            const newObj = clone(action.payload)
+            return newObj
+        },
     },
 })
 
-export const { updateBaseballHomeDivisionData } = baseballHomeDivision2017v2.actions
+export const { updateBaseballHomeDivisionData, updateBaseballHomeDivisionFullData } = baseballHomeDivision2017v2.actions
 
 export default baseballHomeDivision2017v2.reducer

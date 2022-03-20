@@ -6,16 +6,16 @@ interface DataType {
     sport: String
     home: Boolean
     division: Boolean
-    g1FavTwoPointFive: string
-    g1FavOnePointFiveThreePointFive: string
-    g1DogTwoPointFive: string
-    g1DogOnePointFiveThreePointFive: string
-    favTwoPointFive: string
-    favOnePointFiveThreePointFive: string
-    dogTwoPointFive: string
-    dogOnePointFiveThreePointFive: string
-    homeMLTwoPointFive: string
-    homeMLThreePointFive: string
+    g1_fav_o2point5: string
+    g1_fav_o1point5OR3point5: string
+    g1_dog_o2point5: string
+    g1_dog_o1point5OR3point5: string
+    fav_o2point5: string
+    fav_o1point5OR3point5: string
+    dog_o2point5: string
+    dog_o1point5OR3point5: string
+    home_mlo2point5: string
+    home_mlo3point5: string
     ifRoadMLOnePointFive: string
 }
 
@@ -28,16 +28,16 @@ interface FullDataType extends DataType {
 
 interface ColumnType {
     ou: string
-    g1FavTwoPointFive: string
-    g1FavOnePointFiveThreePointFive: string
-    g1DogTwoPointFive: string
-    g1DogOnePointFiveThreePointFive: string
-    favTwoPointFive: string
-    favOnePointFiveThreePointFive: string
-    dogTwoPointFive: string
-    dogOnePointFiveThreePointFive: string
-    homeMLTwoPointFive: string
-    homeMLThreePointFive: string
+    g1_fav_o2point5: string
+    g1_fav_o1point5OR3point5: string
+    g1_dog_o2point5: string
+    g1_dog_o1point5OR3point5: string
+    fav_o2point5: string
+    fav_o1point5OR3point5: string
+    dog_o2point5: string
+    dog_o1point5OR3point5: string
+    home_mlo2point5: string
+    home_mlo3point5: string
     ifRoadMLOnePointFive: string
 }
 
