@@ -4,7 +4,7 @@ import { updateBaseballHomeNonDivisionData } from '../reducers/baseball/non-divi
 
 export const saveCellData =
     (ou: string, year: number, sport: string, home: boolean, division: boolean, payload: PayloadData) =>
-    async (dispatch: any, getState: any): any => {
+    async (dispatch: any, getState: any) => {
         console.log(ou, year, sport, home, division)
         const { value, columnID, rowIndex } = payload
         const apiPayload = {
