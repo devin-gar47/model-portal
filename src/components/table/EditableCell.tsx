@@ -9,7 +9,7 @@ interface MyProps {
     tableName: string
 }
 
-const EditableCell: React.FC<MyProps> = ({ value: initialValue, row: { index }, column: { id }, tableName }) => {
+const EditableCell: React.FC<MyProps> = ({ value: initialValue, row: { index }, column: { id }, tableName, row }) => {
     const [value, setValue] = useState<string>(initialValue)
     const [isEditModeActive, setIsEditModeActive] = useState<boolean>(false)
 
@@ -24,6 +24,7 @@ const EditableCell: React.FC<MyProps> = ({ value: initialValue, row: { index }, 
             rowIndex={index}
             columnID={id}
             tableName={tableName}
+            row={row}
         />
     ) : (
         <ReadValue value={value} setIsEditModeActive={setIsEditModeActive} />

@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 import { ColumnType, DataType } from '../utils/types/types'
-import SideNav from './SideNav'
 import SportsTable from './SportsTable'
 import { useAppSelector } from '../redux/hooks'
 import { BASEBALL_TABLE_NAMES } from '../utils/enums'
