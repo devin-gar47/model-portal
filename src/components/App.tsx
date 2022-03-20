@@ -22,43 +22,43 @@ const App: React.FC = () => {
             },
             {
                 Header: 'G1 FAV o2.5',
-                accessor: 'g1FavTwoPointFive', // accessor is the "key" in the data
+                accessor: 'g1_fav_o2point5', // accessor is the "key" in the data
             },
             {
                 Header: 'G1 FAV o1.5/3.5',
-                accessor: 'g1FavOnePointFiveThreePointFive', // accessor is the "key" in the data
+                accessor: 'g1_fav_o1point5OR3point5', // accessor is the "key" in the data
             },
             {
                 Header: 'G1 DOG o2.5',
-                accessor: 'g1DogTwoPointFive', // accessor is the "key" in the data
+                accessor: 'g1_dog_o2point5', // accessor is the "key" in the data
             },
             {
                 Header: 'G1 DOG o1.5/3.5',
-                accessor: 'g1DogOnePointFiveThreePointFive', // accessor is the "key" in the data
+                accessor: 'g1_dog_o1point5OR3point5', // accessor is the "key" in the data
             },
             {
                 Header: 'FAV o2.5',
-                accessor: 'favTwoPointFive', // accessor is the "key" in the data
+                accessor: 'fav_o2point5', // accessor is the "key" in the data
             },
             {
                 Header: 'FAV o1.5/3.5',
-                accessor: 'favOnePointFiveThreePointFive',
+                accessor: 'fav_o1point5OR3point5',
             },
             {
                 Header: 'DOG o2.5',
-                accessor: 'dogTwoPointFive',
+                accessor: 'dog_o2point5',
             },
             {
                 Header: 'DOG o1.5/3.5',
-                accessor: 'dogOnePointFiveThreePointFive',
+                accessor: 'dog_o1point5OR3point5',
             },
             {
                 Header: 'HOME ML (-200+) on o2.5',
-                accessor: 'homeMLTwoPointFive',
+                accessor: 'home_mlo2point5',
             },
             {
                 Header: 'HOME ML (-200) on o3.5',
-                accessor: 'homeMLThreePointFive',
+                accessor: 'home_mlo3point5',
             },
             {
                 Header: 'IF ROAD ML is (-200+), home dog o1.5 is:',
@@ -67,6 +67,7 @@ const App: React.FC = () => {
         ],
         []
     )
+
     return (
         <div className="flex flex-col">
             <nav className="flex justify-between p-2 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg">

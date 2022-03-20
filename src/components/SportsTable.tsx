@@ -1,15 +1,26 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useQuery } from 'react-query'
 import { Column, TableOptions, useTable } from 'react-table'
+import { useAppDispatch } from '../redux/hooks'
 import { BASEBALL_TABLE_NAMES } from '../utils/enums'
 import { getCellBackgroundColor } from '../utils/table'
+import { updateFullBaseballTable } from '../utils/table-functions'
 import { ColumnType } from '../utils/types/types'
 import EditableCell from './table/EditableCell'
 
 interface Props {
     columns: Column<ColumnType>[]
-    data: readonly ColumnType[]
+    data: any
     tableName: string
     timeline: string
+}
+
+interface TableInfo {
+    year: number
+    sport: string
+    home: boolean
+    division: boolean
 }
 
 function renderTableName(tableName: string): string {
@@ -28,6 +39,27 @@ function renderTableName(tableName: string): string {
 }
 
 const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        const getData = async () => {
+            const { year, sport, home, division } = data[0]
+            const tableInfo = {
+                year,
+                sport,
+                home,
+                division,
+            }
+            try {
+                const data = await axios.post('http://localhost:3030/table/get-table-data', tableInfo)
+                updateFullBaseballTable(dispatch, tableName, data.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        getData()
+    }, [])
+
     const defaultColumn = {
         Cell: EditableCell,
     }
@@ -39,7 +71,7 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
         tableName,
     })
 
-    return (
+    return true ? (
         <div className="my-5 flex flex-col items-center">
             <div className="w-full">
                 <h3 className="text-left font-semibold text-2xl w-0 min-w-full">{renderTableName(tableName)}</h3>
@@ -157,6 +189,8 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
                 </div>
             </div>
         </div>
+    ) : (
+        <p>Loading...</p>
     )
 }
 
