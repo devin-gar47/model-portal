@@ -26,6 +26,29 @@ const getCellBackgroundColor = (cell: any): string => {
     }
 }
 
+const getHeaderColor = (column: any): string => {
+    const { id } = column
+    switch (id) {
+        case 'g1_fav_o2point5':
+        case 'fav_o2point5':
+        case 'home_mlo2point5':
+            return '#e9d5ff'
+        case 'g1_fav_o1point5OR3point5':
+        case 'fav_o1point5OR3point5':
+        case 'home_mlo3point5':
+            return '#a855f7'
+        case 'g1_dog_o2point5':
+        case 'dog_o2point5':
+        case 'ifRoadMLOnePointFive':
+            return '#7e22ce'
+        case 'g1_dog_o1point5OR3point5':
+        case 'dog_o1point5OR3point5':
+            return '#581c87'
+        default:
+            return '#FFFFFF'
+    }
+}
+
 function filterInt(value: string) {
     if (/^[-+]?(\d+|Infinity)$/.test(value)) {
         return Number(value)
@@ -73,4 +96,4 @@ function addToInitialState(
     return newArr
 }
 
-export { getCellBackgroundColor, isValidRecordInfo, addToInitialState }
+export { getCellBackgroundColor, isValidRecordInfo, addToInitialState, getHeaderColor }
