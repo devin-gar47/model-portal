@@ -10,20 +10,10 @@ interface Props {
     rowIndex: number
     columnID: string
     setIsEditModeActive: (value: boolean | ((prevVar: boolean) => boolean)) => void
-    tableName: string
-    data: any
     row: any
 }
 
-const EditValue: React.FC<Props> = ({
-    initialValue,
-    rowIndex,
-    columnID,
-    setIsEditModeActive,
-    tableName,
-    data,
-    row,
-}) => {
+const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive, row }) => {
     const recordInfoArr = initialValue.split('/')
     const readOnlyPercentage = recordInfoArr[1] ? recordInfoArr[1].trim() : '0%'
     const recordArr = recordInfoArr[0].split('-')
