@@ -26,7 +26,7 @@ const initialState: DataType[] = [
         home: false,
         division: false,
         g1_fav_o2point5: '0-0 / 0%',
-        g1_fav_o1point5OR3point5: '0-0 / 0% on o1.5',
+        g1_fav_o1point5OR3point5: '0-0 / 0% on o7.5',
         g1_dog_o2point5: '0-0 / 0%',
         g1_dog_o1point5OR3point5: '0-0 / 0% on o1.5',
         fav_o2point5: '0-0 / 0%',
