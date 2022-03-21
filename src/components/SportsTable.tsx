@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { Column, TableOptions, useTable } from 'react-table'
 import { useAppDispatch } from '../redux/hooks'
 import { BASEBALL_TABLE_NAMES } from '../utils/enums'
-import { getCellBackgroundColor } from '../utils/table'
+import { getCellBackgroundColor, getHeaderColor } from '../utils/table'
 import { updateFullBaseballTable } from '../utils/table-functions'
 import { ColumnType } from '../utils/types/types'
 import EditableCell from './table/EditableCell'
@@ -74,12 +74,14 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
     return true ? (
         <div className="my-5 flex flex-col items-center">
             <div className="w-full">
-                <h3 className="text-left font-semibold text-2xl w-0 min-w-full">{renderTableName(tableName)}</h3>
-                <p className="text-left w-0 min-w-full text-base">{timeline}</p>
+                <div className="border-b-4 border-b-black">
+                    <h3 className="text-left font-semibold text-2xl w-0 min-w-full">{renderTableName(tableName)}</h3>
+                    <p className="text-left w-0 min-w-full text-base">{timeline}</p>
+                </div>
                 <div className="w-full overflow-x-auto block">
                     <table
                         {...getTableProps()}
-                        className="inline-block overflow-x-auto table-fixed border-b-4 border-black"
+                        className="inline-block overflow-x-auto table-fixed border-b-4 border-b-black"
                     >
                         <thead className="bg-white text-sky-500 text-sm shadow-md whitespace-nowrap">
                             {
@@ -93,10 +95,7 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
                                     }) => (
                                         // Apply the header row props
                                         <>
-                                            <tr
-                                                {...headerGroup.getHeaderGroupProps()}
-                                                className="border-t-4 border-black"
-                                            >
+                                            <tr {...headerGroup.getHeaderGroupProps()}>
                                                 {
                                                     // Loop over the headers in each row
                                                     headerGroup.headers.map(
@@ -115,15 +114,18 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
                                                                 | undefined
                                                         }) => (
                                                             // Apply the header cell props
-                                                            <th
-                                                                {...column.getHeaderProps()}
-                                                                className="text-left p-3 min-w-fit"
-                                                            >
-                                                                {
-                                                                    // Render the header
-                                                                    column.render('Header')
-                                                                }
-                                                            </th>
+                                                            <>
+                                                                <th
+                                                                    {...column.getHeaderProps()}
+                                                                    className={`text-left p-3 min-w-fit border-t-[20px]`}
+                                                                    style={{ borderColor: getHeaderColor(column) }}
+                                                                >
+                                                                    {
+                                                                        // Render the header
+                                                                        column.render('Header')
+                                                                    }
+                                                                </th>
+                                                            </>
                                                         )
                                                     )
                                                 }
