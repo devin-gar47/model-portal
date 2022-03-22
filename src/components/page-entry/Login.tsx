@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../../redux/hooks'
 import { storeToken } from '../../redux/reducers/user/user-information'
+import Link from 'next/link'
 
 const Login: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -33,6 +34,7 @@ const Login: React.FC = () => {
             const data = await axios.post('http://localhost:3030/user/login', { username, password })
             const token = data.data.accessToken
             dispatch(storeToken(token))
+            window.location.assign('/')
             setIsLoading(false)
         } catch (e: any) {
             console.log(e.response)
@@ -100,6 +102,7 @@ const Login: React.FC = () => {
                                 Login
                             </button>
                         </form>
+                        <Link href="/signup">Need an account?</Link>
                     </>
                 ) : (
                     <p>Loading...</p>

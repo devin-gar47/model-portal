@@ -1,9 +1,10 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import { store } from '../redux/store'
-import { Provider } from 'react-redux'
+import { store, persistor } from '../redux/store'
+import { Provider, useSelector } from 'react-redux'
 import App from '../components/App'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const queryClient = new QueryClient()
 
@@ -11,7 +12,9 @@ const Home: NextPage<{}, {}> = () => {
     return (
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
-                <App />
+                <PersistGate persistor={persistor}>
+                    <App />
+                </PersistGate>
             </QueryClientProvider>
         </Provider>
     )

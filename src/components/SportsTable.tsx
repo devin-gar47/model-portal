@@ -117,7 +117,7 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
                                                             <>
                                                                 <th
                                                                     {...column.getHeaderProps()}
-                                                                    className={`text-left p-3 min-w-fit border-t-[20px]`}
+                                                                    className={`text-left p-3 min-w-fit border-t-[50px]`}
                                                                     style={{ borderColor: getHeaderColor(column) }}
                                                                 >
                                                                     {

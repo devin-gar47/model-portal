@@ -1,4 +1,4 @@
-import { DataType, FullDataType } from './types/types'
+import { DataType } from './types/types'
 
 const getCellBackgroundColor = (cell: any): string => {
     const id = cell.column.id
@@ -18,6 +18,8 @@ const getCellBackgroundColor = (cell: any): string => {
         const compareCellValue = cellsArr[cellIndex + 4]?.value
         const compareCelPercentage = parseInt(compareCellValue.split('/')[1]?.split('%')[0])
         return percentage - compareCelPercentage >= 4 ? '14, 165, 233' : '255, 255, 255'
+    } else if (id === 'home_mlo2point5' || id === 'home_mlo3point5' || id === 'ifRoadMLOnePointFive') {
+        return '34, 211, 238'
     } else {
         if (percentage <= 44) return '248, 113, 113'
         else if (percentage >= 45 && percentage <= 49) {
@@ -32,11 +34,11 @@ const getHeaderColor = (column: any): string => {
         case 'g1_fav_o2point5':
         case 'fav_o2point5':
         case 'home_mlo2point5':
-            return '#e9d5ff'
+            return '#f3e8ff'
         case 'g1_fav_o1point5OR3point5':
         case 'fav_o1point5OR3point5':
         case 'home_mlo3point5':
-            return '#a855f7'
+            return '#d8b4fe'
         case 'g1_dog_o2point5':
         case 'dog_o2point5':
         case 'ifRoadMLOnePointFive':

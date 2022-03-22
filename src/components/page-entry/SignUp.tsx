@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { ChangeEvent, FormEventHandler, useState } from 'react'
 import { useMutation } from 'react-query'
+import Link from 'next/link'
 
 interface PayloadData {
     username: string
@@ -59,41 +60,44 @@ const SignUp: React.FC = () => {
 
             <div className="flex justify-center items-center h-100">
                 {!isLoading ? (
-                    <form className="flex flex-col items-center p-8 shadow-xl rounded-md" onSubmit={handleSubmit}>
-                        <p hidden={!isSuccess} className="text-green-600 mb-3">
-                            User added successfully!
-                        </p>
-                        <p hidden={!isError} className="text-red-600 mb-3">
-                            User already exists!
-                        </p>
-                        <input
-                            type="text"
-                            id="username"
-                            placeholder="Username"
-                            value={username}
-                            onChange={handleChange}
-                            className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
-                        />
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={handleChange}
-                            className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
-                        />
-                        <input
-                            type="password"
-                            id="confirm_password"
-                            placeholder="Confirm Password"
-                            value={confirmPassword}
-                            onChange={handleChange}
-                            className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
-                        />
-                        <button className="mt-3 py-2 px-4 bg-emerald-400 shadow-sm rounded-md hover:bg-emerald-500">
-                            Sign up
-                        </button>
-                    </form>
+                    <>
+                        <form className="flex flex-col items-center p-8 shadow-xl rounded-md" onSubmit={handleSubmit}>
+                            <p hidden={!isSuccess} className="text-green-600 mb-3">
+                                User added successfully!
+                            </p>
+                            <p hidden={!isError} className="text-red-600 mb-3">
+                                User already exists!
+                            </p>
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Username"
+                                value={username}
+                                onChange={handleChange}
+                                className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
+                            />
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={handleChange}
+                                className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
+                            />
+                            <input
+                                type="password"
+                                id="confirm_password"
+                                placeholder="Confirm Password"
+                                value={confirmPassword}
+                                onChange={handleChange}
+                                className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
+                            />
+                            <button className="mt-3 py-2 px-4 bg-emerald-400 shadow-sm rounded-md hover:bg-emerald-500">
+                                Sign up
+                            </button>
+                        </form>
+                        <Link href="/login">Have an account?</Link>
+                    </>
                 ) : (
                     <p>Loading...</p>
                 )}
