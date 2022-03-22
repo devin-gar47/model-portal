@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import React from 'react'
 import { Provider } from 'react-redux'
 import Login from '../components/page-entry/Login'

@@ -11,9 +11,10 @@ interface Props {
     columnID: string
     setIsEditModeActive: (value: boolean | ((prevVar: boolean) => boolean)) => void
     row: any
+    tableName: string
 }
 
-const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive, row }) => {
+const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEditModeActive, row, tableName }) => {
     const recordInfoArr = initialValue.split('/')
     const readOnlyPercentage = recordInfoArr[1] ? recordInfoArr[1].trim() : '0%'
     const recordArr = recordInfoArr[0].split('-')
@@ -51,7 +52,7 @@ const EditValue: React.FC<Props> = ({ initialValue, rowIndex, columnID, setIsEdi
             value: finalString,
         }
         const { ou, year, sport, home, division } = row.original
-        dispatch<any>(saveCellData(ou, year, sport, home, division, cellInfo))
+        dispatch<any>(saveCellData(tableName, ou, year, sport, home, division, cellInfo))
         setIsEditModeActive(false)
     }
 
