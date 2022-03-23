@@ -8,12 +8,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import ReadOnly from './table/ReadOnly'
 import Login from './page-entry/Login'
+import CalculationsTable from './CalculationsTable'
 
 const App: React.FC = () => {
     const baseballHomeNonDivisionData = useAppSelector((store) => store.baseballHomeNonDivision2017)
     const baseballHomeDivisionData = useAppSelector((store) => store.baseballHomeDivision2017)
     const baseballHomeNonDivision2022Data = useAppSelector((store) => store.baseballHomeNonDivision2022)
     const baseballHomeDivision2022Data = useAppSelector((store) => store.baseballHomeDivision2022)
+    const testData = useAppSelector((store) => store.homeCalculationTable)
     const token = useAppSelector((store) => store.userInformation.token)
 
     const columns = useMemo<Column<ColumnType>[]>(
@@ -71,6 +73,92 @@ const App: React.FC = () => {
         []
     )
 
+    const calculationColumns = useMemo(
+        () => [
+            {
+                Header: 'Game (RoadL/HomeR)',
+                accessor: 'game',
+            },
+            {
+                Header: 'ROAD ML',
+                accessor: 'road_ml',
+            },
+            {
+                Header: 'HOME ML',
+                accessor: 'home_ml',
+            },
+            {
+                Header: 'PICK',
+                accessor: 'pick',
+            },
+            {
+                Header: 'O/U',
+                accessor: 'ou',
+            },
+            {
+                Header: 'G1?',
+                accessor: 'g1',
+            },
+            {
+                Header: 'Division Game?',
+                accessor: 'division_game',
+            },
+            {
+                Header: 'Line',
+                accessor: 'line',
+            },
+            {
+                Header: 'Over Odds',
+                accessor: 'over_odds',
+            },
+            {
+                Header: 'Implied Over Probability',
+                accessor: 'implied_over_probability',
+            },
+            {
+                Header: 'Under Odds',
+                accessor: 'under_odds',
+            },
+            {
+                Header: 'Implied Under Probability',
+                accessor: 'implied_under_probability',
+            },
+            {
+                Header: 'True Over Probability',
+                accessor: 'true_over_probability',
+            },
+            {
+                Header: 'True Under Probability',
+                accessor: 'true_under_probability',
+            },
+            {
+                Header: 'Suggestion',
+                accessor: 'suggestion',
+            },
+        ],
+        []
+    )
+
+    const myData = [
+        {
+            game: 'CWS/DET',
+            road_ml: '-245',
+            home_ml: '175',
+            pick: 'DOG',
+            ou: '9',
+            g1: 'YES',
+            division_game: 'YES',
+            line: '1.5',
+            over_odds: '100',
+            implied_over_probability: '40%',
+            under_odds: '-125',
+            implied_under_probability: '55.60%',
+            true_over_probability: '58.17%',
+            true_under_probability: '41.83%',
+            suggestion: '8.17% Over',
+        },
+    ]
+
     function renderPageContent() {
         return (
             <div className="flex flex-col">
@@ -113,6 +201,7 @@ const App: React.FC = () => {
                                 tableName={BASEBALL_TABLE_NAMES.baseballHomeDivision2022}
                                 timeline="2022 (Current Season)"
                             />
+                            <CalculationsTable columns={calculationColumns} data={testData} />
                         </TabPanel>
                         <TabPanel>
                             <h2>Coming soon!</h2>
