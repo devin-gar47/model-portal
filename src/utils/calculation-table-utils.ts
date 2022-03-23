@@ -1,4 +1,4 @@
-function getImpliedProbability(odds): string {
+function getImpliedProbability(odds: string): string {
     switch (odds) {
         case '-100':
             return '50.00%'
