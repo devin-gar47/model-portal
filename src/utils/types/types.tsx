@@ -26,6 +26,24 @@ interface FullDataType extends DataType {
     division: Boolean
 }
 
+interface FullCalculationTable {
+    game: string
+    road_ml: string
+    home_ml: string
+    pick: string
+    ou: string
+    g1: string
+    division_game: string
+    line: string
+    over_odds: string
+    implied_over_probability: string
+    under_odds: string
+    implied_under_probability: string
+    true_over_probability: string
+    true_under_probability: string
+    suggestion: string
+}
+
 interface ColumnType {
     ou: string
     g1_fav_o2point5: string
@@ -47,4 +65,4 @@ interface PayloadData {
     value: string
 }
 
-export type { DataType, FullDataType, ColumnType, PayloadData }
+export type { DataType, FullDataType, ColumnType, PayloadData, FullCalculationTable }

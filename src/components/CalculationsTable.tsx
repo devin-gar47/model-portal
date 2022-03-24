@@ -1,10 +1,16 @@
 import axios from 'axios'
-import { objOf } from 'ramda'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTable } from 'react-table'
-import { useAppDispatch } from '../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { updateHomeCalculationsTable } from '../redux/reducers/baseball/calculation-table/home/home-calculation-table'
-import { getImpliedProbability } from '../utils/calculation-table-utils'
+import {
+    calculateSuggestion,
+    calculateTrueOverProbability,
+    calculateTrueUnderProbability,
+    getCalculationTableCellBackgroundColor,
+    getImpliedProbability,
+} from '../utils/calculation-table-utils'
+import { FullCalculationTable } from '../utils/types/types'
 import ReadOnly from './table/ReadOnly'
 
 interface Props {
@@ -25,36 +31,39 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
     })
 
     const dispatch = useAppDispatch()
-
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         const data = await axios.get('http://localhost:3030/test')
-    //         return data.data.message
-    //     }
-    //     const message = getData()
-    //     console.log(message)
-    // const interval = setInterval(async () => {
-    //     // console.log('This will run every second!');
-    //     const message = await getData()
-    //     console.log(message)
-    // }, 4000)
-    // return () => clearInterval(interval)
-    // }, [])
+    const nonDivisionTable = useAppSelector((store) => store.baseballHomeNonDivision2017)
+    const divisionTable = useAppSelector((store) => store.baseballHomeDivision2017)
 
     useEffect(() => {
         const getData = async () => {
             const { data } = await axios.get('http://localhost:3030/draft-kings/test-get-data')
-            const calculatedArr = data.map((obj: any) => {
+            const calculatedArr = data.map((obj: FullCalculationTable) => {
                 const impliedOverProbability = getImpliedProbability(obj.over_odds)
-                return { ...obj, implied_over_probability: impliedOverProbability }
+                const impliedUnderProbability = getImpliedProbability(obj.under_odds)
+                const trueOverProbability = calculateTrueOverProbability(obj, nonDivisionTable, divisionTable)
+                const trueUnderProbability = calculateTrueUnderProbability(trueOverProbability)
+                const suggestion = calculateSuggestion(
+                    trueOverProbability,
+                    trueUnderProbability,
+                    impliedOverProbability,
+                    impliedUnderProbability
+                )
+                return {
+                    ...obj,
+                    implied_over_probability: impliedOverProbability,
+                    implied_under_probability: impliedUnderProbability,
+                    true_over_probability: trueOverProbability,
+                    true_under_probability: trueUnderProbability,
+                    suggestion,
+                }
             })
             dispatch(updateHomeCalculationsTable(calculatedArr))
         }
 
         getData()
         // const interval = setInterval(async () => {
-        //     getData()
-        // }, (1000 * 60) * .5)
+        //     await getData()
+        // }, 3000)
         // return () => clearInterval(interval)
     }, [])
 
@@ -62,10 +71,7 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
         <div className="my-5 flex flex-col items-center">
             <div className="w-full">
                 <div className="w-full overflow-x-auto block">
-                    <table
-                        {...getTableProps()}
-                        className="inline-block overflow-x-auto table-fixed border-b-4 border-b-black"
-                    >
+                    <table {...getTableProps()} className="inline-block overflow-x-auto table-fixed">
                         <thead className="bg-white text-sky-500 text-sm shadow-md whitespace-nowrap">
                             {
                                 // Loop over the header rows
@@ -148,6 +154,12 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
                                                             <td
                                                                 {...cell.getCellProps()}
                                                                 className="px-3 py-2 text-sm min-w-fit whitespace-nowrap"
+                                                                style={{
+                                                                    backgroundColor: `rgba(${getCalculationTableCellBackgroundColor(
+                                                                        cell
+                                                                    )}, 0.6)`,
+                                                                    opacity: 0.9,
+                                                                }}
                                                             >
                                                                 {
                                                                     // Render the cell contents
