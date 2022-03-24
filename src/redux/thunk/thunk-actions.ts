@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { updateBaseballTable } from '../../utils/table-functions'
 import { PayloadData } from '../../utils/types/types'
-import { updateBaseballHomeNonDivisionData } from '../reducers/baseball/non-division/baseballHomeNonDivision2017'
 
 export const saveCellData =
     (
@@ -28,9 +27,8 @@ export const saveCellData =
             },
         }
         try {
-            await axios.put('http://localhost:3030/table/update-row', apiPayload)
+            await axios.put(`${process.env.API_URI}/table/update-row`, apiPayload)
             updateBaseballTable(dispatch, tableName, { rowIndex, columnID, value })
-            // dispatch(updateBaseballHomeNonDivisionData({ rowIndex, columnID, value }))
         } catch (e) {
             console.log(e)
         }

@@ -31,7 +31,7 @@ const Login: React.FC = () => {
         setIsLoading(true)
         setIsError('')
         try {
-            const data = await axios.post('http://localhost:3030/user/login', { username, password })
+            const data = await axios.post(`${process.env.API_URI}/user/login`, { username, password })
             const token = data.data.accessToken
             dispatch(storeToken(token))
             window.location.assign('/')
