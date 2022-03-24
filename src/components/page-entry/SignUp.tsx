@@ -37,6 +37,7 @@ const SignUp: React.FC = () => {
     }
 
     const handleSubmit = (e: any): void => {
+        console.log(process.env.API_URI)
         e.preventDefault()
         const userInfo: PayloadData = {
             username,
