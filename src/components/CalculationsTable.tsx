@@ -36,7 +36,7 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get('http://localhost:3030/draft-kings/test-get-data')
+            const { data } = await axios.get(`${process.env.API_URI}/draft-kings/test-get-data`)
             const calculatedArr = data.map((obj: FullCalculationTable) => {
                 const impliedOverProbability = getImpliedProbability(obj.over_odds)
                 const impliedUnderProbability = getImpliedProbability(obj.under_odds)
@@ -61,6 +61,7 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
         }
 
         getData()
+        console.log(process.env.NODE_ENV)
         // const interval = setInterval(async () => {
         //     await getData()
         // }, 3000)
