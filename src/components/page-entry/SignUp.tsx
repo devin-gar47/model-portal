@@ -11,7 +11,7 @@ interface PayloadData {
 
 const SignUp: React.FC = () => {
     const { isError, isSuccess, isLoading, error, mutate } = useMutation((userInfo: PayloadData) => {
-        return axios.post(`${process.env.API_URI}/user/signup`, userInfo)
+        return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo)
     })
 
     const [username, setUsername] = useState<string>('')
@@ -37,7 +37,6 @@ const SignUp: React.FC = () => {
     }
 
     const handleSubmit = (e: any): void => {
-        console.log(process.env.API_URI)
         e.preventDefault()
         const userInfo: PayloadData = {
             username,
