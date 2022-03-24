@@ -17,7 +17,9 @@ const getCellBackgroundColor = (cell: any): string => {
 
         const compareCellValue = cellsArr[cellIndex + 4]?.value
         const compareCelPercentage = parseInt(compareCellValue.split('/')[1]?.split('%')[0])
-        return percentage - compareCelPercentage >= 4 ? '14, 165, 233' : '255, 255, 255'
+        return percentage - compareCelPercentage >= 4 || compareCelPercentage - percentage >= 4
+            ? '14, 165, 233'
+            : '255, 255, 255'
     } else if (id === 'home_mlo2point5' || id === 'home_mlo3point5' || id === 'ifRoadMLOnePointFive') {
         return '34, 211, 238'
     } else {
