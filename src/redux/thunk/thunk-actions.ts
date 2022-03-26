@@ -27,7 +27,7 @@ export const saveCellData =
             },
         }
         try {
-            await axios.put(`${process.env.NEXT_PUBLIC_API_URI}/table/update-row`, apiPayload)
+            await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/table/update-row`, apiPayload)
             updateBaseballTable(dispatch, tableName, { rowIndex, columnID, value })
         } catch (e) {
             console.log(e)

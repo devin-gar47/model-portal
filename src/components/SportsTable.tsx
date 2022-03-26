@@ -51,7 +51,7 @@ const SportsTable: React.FC<Props> = ({ columns, data, tableName, timeline }) =>
                 division,
             }
             try {
-                const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URI}/table/get-table-data`, tableInfo)
+                const data = await axios.post(`http://localhost:3030/table/get-table-data`, tableInfo)
                 updateFullBaseballTable(dispatch, tableName, data.data)
             } catch (e) {
                 console.log(e)
