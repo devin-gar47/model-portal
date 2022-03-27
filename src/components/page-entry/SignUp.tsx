@@ -11,7 +11,7 @@ interface PayloadData {
 
 const SignUp: React.FC = () => {
     const { isError, isSuccess, isLoading, error, mutate } = useMutation((userInfo: PayloadData) => {
-        return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo)
+        return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo, { withCredentials: true })
     })
 
     const [username, setUsername] = useState<string>('')
