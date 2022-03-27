@@ -11,7 +11,12 @@ interface PayloadData {
 
 const SignUp: React.FC = () => {
     const { isError, isSuccess, isLoading, error, mutate } = useMutation((userInfo: PayloadData) => {
-        return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo, { withCredentials: true })
+        const headers = new Headers()
+        headers.append('Origin', 'https://alex-model-project.herokuapp.com')
+        return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo, {
+            withCredentials: true,
+            headers: { 'Access-Control-Allow-Origin': '*' },
+        })
     })
 
     const [username, setUsername] = useState<string>('')
