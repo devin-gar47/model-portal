@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { ChangeEvent, FormEventHandler, useState } from 'react'
+import React, { ChangeEvent, FormEventHandler, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 import Link from 'next/link'
 
@@ -10,18 +10,17 @@ interface PayloadData {
 }
 
 const SignUp: React.FC = () => {
-    const { isError, isSuccess, isLoading, error, mutate } = useMutation((userInfo: PayloadData) => {
-        const headers = new Headers()
-        headers.append('Origin', 'https://alex-model-project.herokuapp.com')
-        return axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo)
-    })
-
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [confirmPassword, setConfirmPassword] = useState<string>('')
+    const [error, setError] = useState<string>('')
+    const [success, setSuccess] = useState<boolean>(false)
+    const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
         e.preventDefault()
+        setPasswordsMatch(true)
         const { value } = e.target
         switch (e.target.id) {
             case 'username':
@@ -38,14 +37,40 @@ const SignUp: React.FC = () => {
         }
     }
 
-    const handleSubmit = (e: any): void => {
+    const handleSubmit = async (e: any): Promise<void> => {
         e.preventDefault()
+        setSuccess(false)
+        setError('')
+
+        if (password !== confirmPassword) {
+            setPasswordsMatch(false)
+            return
+        }
+
+        setIsLoading(true)
         const userInfo: PayloadData = {
             username,
             password,
             role: 'ADMIN',
         }
-        mutate(userInfo)
+
+        try {
+            await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/signup`, userInfo)
+            setSuccess(true)
+        } catch (e: any) {
+            const statusCode = e?.response?.status
+            switch (statusCode) {
+                case 400:
+                    setError('Invalid username or password.')
+                    break
+                case 500:
+                    setError('Server error. Please try again!')
+                    break
+                default:
+                    setError('Something went wrong. Please try again later')
+            }
+        }
+        setIsLoading(false)
     }
 
     return (
@@ -60,15 +85,15 @@ const SignUp: React.FC = () => {
                 }
             `}</style>
 
-            <div className="flex justify-center items-center h-100">
+            <div className="flex flex-col justify-center items-center h-100">
                 {!isLoading ? (
                     <>
                         <form className="flex flex-col items-center p-8 shadow-xl rounded-md" onSubmit={handleSubmit}>
-                            <p hidden={!isSuccess} className="text-green-600 mb-3">
+                            <p hidden={!success} className="text-green-600 mb-3">
                                 User added successfully!
                             </p>
-                            <p hidden={!isError} className="text-red-600 mb-3">
-                                User already exists!
+                            <p hidden={!error} className="text-red-600 mb-3">
+                                {error}
                             </p>
                             <input
                                 type="text"
@@ -94,11 +119,16 @@ const SignUp: React.FC = () => {
                                 onChange={handleChange}
                                 className="block p-4 border-b-2 border-cyan-400 focus:outline-none focus:border-blue-400"
                             />
+                            <small hidden={passwordsMatch} className="text-red-600">
+                                Passwords must match.
+                            </small>
                             <button className="mt-3 py-2 px-4 bg-emerald-400 shadow-sm rounded-md hover:bg-emerald-500">
                                 Sign up
                             </button>
                         </form>
-                        <Link href="/login">Have an account?</Link>
+                        <div className="mt-3">
+                            <Link href="/login">Have an account?</Link>
+                        </div>
                     </>
                 ) : (
                     <p>Loading...</p>
