@@ -102,7 +102,9 @@ const Login: React.FC = () => {
                                 Login
                             </button>
                         </form>
-                        <Link href="/signup">Need an account?</Link>
+                        <div className="mt-3 text-slate-200">
+                            <Link href="/signup">Need an account?</Link>
+                        </div>
                     </>
                 ) : (
                     <p>Loading...</p>
