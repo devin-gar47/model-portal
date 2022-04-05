@@ -15,6 +15,12 @@ const App: React.FC = () => {
     const baseballHomeDivisionData = useAppSelector((store) => store.baseballHomeDivision2017)
     const baseballHomeNonDivision2022Data = useAppSelector((store) => store.baseballHomeNonDivision2022)
     const baseballHomeDivision2022Data = useAppSelector((store) => store.baseballHomeDivision2022)
+
+    const baseballVisitorNonDivisionData = useAppSelector((store) => store.baseballVisitorNonDivision2017)
+    const baseballVisitorDivisionData = useAppSelector((store) => store.baseballVisitorDivision2017)
+    const baseballVisitorNonDivision2022Data = useAppSelector((store) => store.baseballVisitorNonDivision2022)
+    const baseballVisitorDivision2022Data = useAppSelector((store) => store.baseballVisitorDivision2022)
+
     const testData = useAppSelector((store) => store.homeCalculationTable)
     const token = useAppSelector((store) => store.userInformation.token)
 
@@ -139,26 +145,6 @@ const App: React.FC = () => {
         []
     )
 
-    const myData = [
-        {
-            game: 'CWS/DET',
-            road_ml: '-245',
-            home_ml: '175',
-            pick: 'DOG',
-            ou: '9',
-            g1: 'YES',
-            division_game: 'YES',
-            line: '1.5',
-            over_odds: '100',
-            implied_over_probability: '40%',
-            under_odds: '-125',
-            implied_under_probability: '55.60%',
-            true_over_probability: '58.17%',
-            true_under_probability: '41.83%',
-            suggestion: '8.17% Over',
-        },
-    ]
-
     function renderPageContent() {
         return (
             <div className="flex flex-col">
@@ -203,8 +189,31 @@ const App: React.FC = () => {
                             />
                             <CalculationsTable columns={calculationColumns} data={testData} />
                         </TabPanel>
-                        <TabPanel>
-                            <h2>Coming soon!</h2>
+                        <TabPanel className="w-full">
+                            <SportsTable
+                                columns={columns}
+                                data={baseballVisitorNonDivisionData}
+                                tableName={BASEBALL_TABLE_NAMES.baseballVisitorNonDivision}
+                                timeline="2017-2021"
+                            />
+                            <SportsTable
+                                columns={columns}
+                                data={baseballVisitorDivisionData}
+                                tableName={BASEBALL_TABLE_NAMES.baseballVisitorDivision}
+                                timeline="2017-2021"
+                            />
+                            <SportsTable
+                                columns={columns}
+                                data={baseballVisitorNonDivision2022Data}
+                                tableName={BASEBALL_TABLE_NAMES.baseballVisitorNonDivision2022}
+                                timeline="2022 (Current Season)"
+                            />
+                            <SportsTable
+                                columns={columns}
+                                data={baseballVisitorDivision2022Data}
+                                tableName={BASEBALL_TABLE_NAMES.baseballVisitorDivision2022}
+                                timeline="2022 (Current Season)"
+                            />
                         </TabPanel>
                     </Tabs>
                 </div>
