@@ -33,6 +33,14 @@ function renderTableName(tableName: string): string {
             return '2022 O/U 2.5 1H RUNS - HOME TEAM'
         case BASEBALL_TABLE_NAMES.baseballHomeDivision2022:
             return 'DIVISION GAMES - 2022 O/U 2.5 1H RUNS - HOME TEAM'
+        case BASEBALL_TABLE_NAMES.baseballVisitorNonDivision:
+            return 'O/U 2.5 1H RUNS - VISITOR TEAM'
+        case BASEBALL_TABLE_NAMES.baseballVisitorDivision:
+            return 'DIVISION GAMES - O/U 2.5 1H RUNS - VISITOR TEAM'
+        case BASEBALL_TABLE_NAMES.baseballVisitorNonDivision2022:
+            return '2022 O/U 2.5 1H RUNS - VISITOR TEAM'
+        case BASEBALL_TABLE_NAMES.baseballVisitorDivision2022:
+            return 'DIVISION GAMES - 2022 O/U 2.5 1H RUNS - VISITOR TEAM'
         default:
             return ''
     }

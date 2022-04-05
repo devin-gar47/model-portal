@@ -10,6 +10,22 @@ import { updateBaseballHomeDivisionFullData } from '../redux/reducers/baseball/d
 import { updateBaseballHomeDivision2022FullData } from '../redux/reducers/baseball/division/baseballHomeDivision2022'
 import { updateBaseballHomeNonDivisionFullData } from '../redux/reducers/baseball/non-division/baseballHomeNonDivision2017'
 import { updateBaseballHomeNonDivision2022FullData } from '../redux/reducers/baseball/non-division/baseballHomeNonDivision2022'
+import {
+    updateBaseballVisitorNonDivision2022Data,
+    updateBaseballVisitorNonDivision2022FullData,
+} from '../redux/reducers/baseball/non-division/baseballVisitorNonDivision2022'
+import {
+    updateBaseballVisitorDivisionData,
+    updateBaseballVisitorDivisionFullData,
+} from '../redux/reducers/baseball/division/baseballVisitorDivision2017'
+import {
+    updateBaseballVisitorNonDivision2017Data,
+    updateBaseballVisitorNonDivision2017FullData,
+} from '../redux/reducers/baseball/non-division/baseballVisitorNonDivision'
+import {
+    updateBaseballVisitorDivision2022Data,
+    updateBaseballVisitorDivision2022FullData,
+} from '../redux/reducers/baseball/division/baseballVisitorDivision2022'
 
 function updateBaseballTable(dispatch: Dispatch<AnyAction>, baseballTableName: string, cellInfo: PayloadData): void {
     switch (baseballTableName) {
@@ -21,6 +37,14 @@ function updateBaseballTable(dispatch: Dispatch<AnyAction>, baseballTableName: s
             return dispatch(updateBaseballHomeNonDivision2022Data(cellInfo))
         case BASEBALL_TABLE_NAMES.baseballHomeDivision2022:
             return dispatch(updateBaseballHomeDivision2022Data(cellInfo))
+        case BASEBALL_TABLE_NAMES.baseballVisitorNonDivision:
+            return dispatch(updateBaseballVisitorNonDivision2017Data(cellInfo))
+        case BASEBALL_TABLE_NAMES.baseballVisitorDivision:
+            return dispatch(updateBaseballVisitorDivisionData(cellInfo))
+        case BASEBALL_TABLE_NAMES.baseballVisitorNonDivision2022:
+            return dispatch(updateBaseballVisitorNonDivision2022Data(cellInfo))
+        case BASEBALL_TABLE_NAMES.baseballVisitorDivision2022:
+            return dispatch(updateBaseballVisitorDivision2022Data(cellInfo))
         default:
             return
     }
@@ -36,6 +60,14 @@ function updateFullBaseballTable(dispatch: Dispatch<AnyAction>, baseballTableNam
             return dispatch(updateBaseballHomeNonDivision2022FullData(data))
         case BASEBALL_TABLE_NAMES.baseballHomeDivision2022:
             return dispatch(updateBaseballHomeDivision2022FullData(data))
+        case BASEBALL_TABLE_NAMES.baseballVisitorNonDivision:
+            return dispatch(updateBaseballVisitorNonDivision2017FullData(data))
+        case BASEBALL_TABLE_NAMES.baseballVisitorDivision:
+            return dispatch(updateBaseballVisitorDivisionFullData(data))
+        case BASEBALL_TABLE_NAMES.baseballVisitorNonDivision2022:
+            return dispatch(updateBaseballVisitorNonDivision2022FullData(data))
+        case BASEBALL_TABLE_NAMES.baseballVisitorDivision2022:
+            return dispatch(updateBaseballVisitorDivision2022FullData(data))
         default:
             return
     }
