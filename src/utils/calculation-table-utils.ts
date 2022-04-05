@@ -153,6 +153,8 @@ function calculateTrueOverProbability(
     const divRowIndex = divisionTableInfo.findIndex((row: any) => row.ou === ou)
     const divRowObj = divisionTableInfo[divRowIndex]
 
+    console.log(pick, line)
+
     if (pick === 'FAV') {
         if (line === '1.5') {
             if (g1 === 'YES') g1RecordInfo = nonDivRowObj.g1_fav_o1point5OR3point5
@@ -238,6 +240,17 @@ function calculateTrueOverProbability(
         const percentage = getPercentage(qualifier)
         totalPercentage = totalPercentage + parseInt(percentage)
     })
+
+    console.log(`
+    recordInfo: ${recordInfo}\n
+    g1RecordInfo: ${g1RecordInfo}\n
+    homeMLRecordInfo: ${homeMLRecordInfo}\n
+    roadMLRecordInfo: ${roadMLRecordInfo}\n
+    division_recordInfo: ${division_recordInfo}\n
+    division_g1RecordInfo: ${division_g1RecordInfo}\n
+    division_homeMLRecordInfo: ${division_homeMLRecordInfo}\n
+    division_roadMLRecordInfo: ${division_roadMLRecordInfo}\n  
+    `)
 
     const trueOverProbability = divide(totalPercentage, qualifiersArr.length)
 

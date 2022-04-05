@@ -42,6 +42,7 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
                 const impliedUnderProbability = getImpliedProbability(obj.under_odds)
                 const trueOverProbability = calculateTrueOverProbability(obj, nonDivisionTable, divisionTable)
                 const trueUnderProbability = calculateTrueUnderProbability(trueOverProbability)
+                console.log(impliedOverProbability, trueOverProbability)
                 const suggestion = calculateSuggestion(
                     trueOverProbability,
                     trueUnderProbability,
@@ -61,7 +62,6 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
         }
 
         getData()
-        console.log(process.env.NODE_ENV)
         // const interval = setInterval(async () => {
         //     await getData()
         // }, 3000)

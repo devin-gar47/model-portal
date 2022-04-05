@@ -7,7 +7,6 @@ import { Column } from 'react-table'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import ReadOnly from './table/ReadOnly'
-import Login from './page-entry/Login'
 import CalculationsTable from './CalculationsTable'
 
 const App: React.FC = () => {
