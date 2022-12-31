@@ -36,28 +36,32 @@ const CalculationsTable: React.FC<Props> = ({ data, columns }) => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/draft-kings/test-get-data`)
-            const calculatedArr = data.map((obj: FullCalculationTable) => {
-                const impliedOverProbability = getImpliedProbability(obj.over_odds)
-                const impliedUnderProbability = getImpliedProbability(obj.under_odds)
-                const trueOverProbability = calculateTrueOverProbability(obj, nonDivisionTable, divisionTable)
-                const trueUnderProbability = calculateTrueUnderProbability(trueOverProbability)
-                const suggestion = calculateSuggestion(
-                    trueOverProbability,
-                    trueUnderProbability,
-                    impliedOverProbability,
-                    impliedUnderProbability
-                )
-                return {
-                    ...obj,
-                    implied_over_probability: impliedOverProbability,
-                    implied_under_probability: impliedUnderProbability,
-                    true_over_probability: trueOverProbability,
-                    true_under_probability: trueUnderProbability,
-                    suggestion,
-                }
-            })
-            dispatch(updateHomeCalculationsTable(calculatedArr))
+            try {
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/draft-kings/test-get-data`)
+                const calculatedArr = data.map((obj: FullCalculationTable) => {
+                    const impliedOverProbability = getImpliedProbability(obj.over_odds)
+                    const impliedUnderProbability = getImpliedProbability(obj.under_odds)
+                    const trueOverProbability = calculateTrueOverProbability(obj, nonDivisionTable, divisionTable)
+                    const trueUnderProbability = calculateTrueUnderProbability(trueOverProbability)
+                    const suggestion = calculateSuggestion(
+                        trueOverProbability,
+                        trueUnderProbability,
+                        impliedOverProbability,
+                        impliedUnderProbability
+                    )
+                    return {
+                        ...obj,
+                        implied_over_probability: impliedOverProbability,
+                        implied_under_probability: impliedUnderProbability,
+                        true_over_probability: trueOverProbability,
+                        true_under_probability: trueUnderProbability,
+                        suggestion,
+                    }
+                })
+                dispatch(updateHomeCalculationsTable(calculatedArr))
+            } catch (e) {
+                console.log(e)
+            }
         }
 
         getData()
