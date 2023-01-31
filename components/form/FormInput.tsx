@@ -3,13 +3,14 @@ import React, { ChangeEvent, useState } from "react";
 
 interface FormInputProps {
   id: string;
+  type: string
   label: string
   placeholder: string;
   value: string
   setValue: (text: string) => void
 }
 
-export default function FormInput({ id, label, value, setValue, placeholder }: FormInputProps) {
+export default function FormInput({ id, type="text", label, value, setValue, placeholder }: FormInputProps) {
 
   function handleChange(e: ChangeEvent<HTMLInputElement>): void {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function FormInput({ id, label, value, setValue, placeholder }: F
     <>
     <label htmlFor={id} className="w-full text-left font-medium">{label}</label>
     <input
-      type={id === "password" ? "password" : "text"}
+      type={type}
       id={id}
       placeholder={placeholder}
       value={value}
