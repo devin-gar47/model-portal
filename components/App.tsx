@@ -26,7 +26,7 @@ const App: React.FC = () => {
     const testData = useAppSelector((store) => store.homeCalculationTable)
     const token = useAppSelector((store) => store.userInformation.token)
 
-    const columns = useMemo<Column<ColumnType>[]>(
+    const columns = useMemo<any[]>(
         () => [
             {
                 Header: 'O/U',
