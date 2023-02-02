@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import EditValue from './EditValue'
 import ReadValue from './ReadValue'
 
-interface MyProps {
+interface EditableCellProps {
     value: string
     row: any // React-Table does not have proper typescript types as of February 2022
     column: any // React-Table does not have proper typescript types as of February 2022
-    tableName: string
 }
 
-const EditableCell: React.FC<MyProps> = ({ value: initialValue, row: { index }, column: { id }, row, tableName }) => {
+const EditableCell: React.FC<any> = ({ value: initialValue, row: { index }, column: { id }, row, tableName }) => {
     const [value, setValue] = useState<string>(initialValue)
     const [isEditModeActive, setIsEditModeActive] = useState<boolean>(false)
 

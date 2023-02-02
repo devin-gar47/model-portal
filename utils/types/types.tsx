@@ -57,6 +57,7 @@ interface ColumnType {
     home_mlo2point5: string
     home_mlo3point5: string
     ifRoadMLOnePointFive: string
+    tableName: string
 }
 
 interface PayloadData {
