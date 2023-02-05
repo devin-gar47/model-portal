@@ -8,7 +8,7 @@ interface FormTransferLink {
 
 export default function FormTransferLink({ link, text }: FormTransferLink) {
   return (
-    <div className="mt-3 text-black text-center">
+    <div data-testid="form-transfer-link" className="mt-3 text-black text-center">
       <Link href={link}>{text}</Link>
     </div>
   );

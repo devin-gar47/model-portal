@@ -12,7 +12,7 @@ interface FormInputProps {
 
 export default function FormInput({
   id,
-  type = "text",
+  type,
   label,
   value,
   setValue,
@@ -26,10 +26,15 @@ export default function FormInput({
 
   return (
     <>
-      <label htmlFor={id} className="w-full text-left font-medium">
+      <label
+        data-testid="form-input-label"
+        htmlFor={id}
+        className="w-full text-left font-medium"
+      >
         {label}
       </label>
       <input
+        data-testid={`form-input-${id}`}
         type={type}
         id={id}
         placeholder={placeholder}
