@@ -81,13 +81,18 @@ const SportsTable: React.FC<Props> = ({
     Cell: EditableCell,
   };
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow }: any =
-    useTable({
-      columns,
-      data,
-      defaultColumn,
-      tableName
-    });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  }: any = useTable({
+    columns,
+    data,
+    defaultColumn,
+    tableName,
+  });
 
   return true ? (
     <div className="my-5 flex flex-col items-center">

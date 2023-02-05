@@ -1,7 +1,7 @@
 import React from "react";
 
 interface FormButtonProps {
-    text: string
+  text: string;
 }
 
 export default function FormButton({ text }: FormButtonProps) {
