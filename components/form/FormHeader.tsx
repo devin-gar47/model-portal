@@ -5,5 +5,12 @@ interface FormHeaderProps {
 }
 
 export default function FormHeader({ text }: FormHeaderProps) {
-  return <h2 data-testid="form-header-text" className="mb-2 text-2xl text-black text-left w-full">{text}</h2>;
+  return (
+    <h2
+      data-testid="form-header-text"
+      className="mb-2 text-2xl text-black text-left w-full"
+    >
+      {text}
+    </h2>
+  );
 }

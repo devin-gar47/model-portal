@@ -7,8 +7,8 @@ describe("Form Input component", () => {
   const label = "some label";
   let value = "";
   const setValueMock = jest.fn((text) => {
-    value = text
-    return
+    value = text;
+    return;
   });
   const placeholder = "some placeholder";
 
