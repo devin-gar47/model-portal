@@ -92,7 +92,12 @@ export default function Login() {
       </div>
       <div className="lg:col-span-5 bg-slate-100 relative h-screen">
         <DarkOverlay />
-        <Image className="object-cover" alt="baseball-field" src="/login-baseball.jpg" fill />
+        <Image
+          className="object-cover"
+          alt="baseball-field"
+          src="/login-baseball.jpg"
+          fill
+        />
       </div>
     </div>
   );

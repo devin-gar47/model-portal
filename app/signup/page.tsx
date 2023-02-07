@@ -91,7 +91,7 @@ function SignUp() {
     <div className="lg:grid lg:grid-cols-10">
       <div className="lg:col-span-5 relative h-screen bg-blue-600/30 backdrop-brightness-75 bg-cover">
         <DarkOverlay />
-          <Image alt="baseball-field" src="/sign-up-2.jpg" fill />
+        <Image alt="baseball-field" src="/sign-up-2.jpg" fill />
       </div>
 
       <div className="lg:col-span-5 bg-white drop-shadow-md">
