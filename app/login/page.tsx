@@ -8,6 +8,8 @@ import FormInput from "../../components/form/FormInput";
 import FormError from "../../components/form/FormError";
 import FormButton from "../../components/form/FormButton";
 import FormTransferLink from "../../components/form/FormTransferLink";
+import Image from "next/image";
+import DarkOverlay from "@/components/DarkOverlay";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -88,7 +90,15 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <div className="lg:col-span-5 bg-slate-100"></div>
+      <div className="lg:col-span-5 bg-slate-100 relative h-screen">
+        <DarkOverlay />
+        <Image
+          className="object-cover"
+          alt="baseball-field"
+          src="/login-baseball.jpg"
+          fill
+        />
+      </div>
     </div>
   );
 }
