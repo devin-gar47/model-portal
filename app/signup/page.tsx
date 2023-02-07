@@ -11,6 +11,8 @@ import FormInput from "@/components/form/FormInput";
 import FormTransferLink from "@/components/form/FormTransferLink";
 import FormButton from "@/components/form/FormButton";
 import FormHeader from "@/components/form/FormHeader";
+import Image from "next/image";
+import DarkOverlay from "@/components/DarkOverlay";
 
 interface PayloadData {
   username: string;
@@ -87,7 +89,10 @@ function SignUp() {
 
   return (
     <div className="lg:grid lg:grid-cols-10">
-      <div className="lg:col-span-5 bg-slate-100"></div>
+      <div className="lg:col-span-5 relative h-screen bg-blue-600/30 backdrop-brightness-75 bg-cover">
+        <DarkOverlay />
+          <Image alt="baseball-field" src="/sign-up-2.jpg" fill />
+      </div>
 
       <div className="lg:col-span-5 bg-white drop-shadow-md">
         <div className="flex flex-col justify-center items-center lg:min-h-screen">
