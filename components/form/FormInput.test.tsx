@@ -1,4 +1,5 @@
 import { fireEvent, render } from "@testing-library/react";
+import React from "react";
 import FormInput from "./FormInput";
 
 describe("Form Input component", () => {

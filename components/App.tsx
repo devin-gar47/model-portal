@@ -231,6 +231,7 @@ const App: React.FC = () => {
                 tableName={BASEBALL_TABLE_NAMES.baseballVisitorDivision2022}
                 timeline="2022 (Current Season)"
               />
+              <CalculationsTable columns={calculationColumns} data={testData} />
             </TabPanel>
           </Tabs>
         </div>

@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import React from "react";
 import FormHeader from "./FormHeader";
 
 it("should render the correct form header text", () => {

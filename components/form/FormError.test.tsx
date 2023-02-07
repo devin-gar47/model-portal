@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import React from "react";
 import FormError from "./FormError";
 
 it("should show the error message because an error is present", () => {
