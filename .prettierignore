@@ -1,4 +1,5 @@
 # Ignore artifacts:
+.next
 build
 coverage
 package.json
