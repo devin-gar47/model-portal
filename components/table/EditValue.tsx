@@ -11,7 +11,7 @@ import { saveCellData } from "../../redux/thunk/thunk-actions";
 import { isValidRecordInfo } from "../../utils/table";
 import { updateBaseballTable } from "../../utils/table-functions";
 
-interface Props {
+interface IEditProps {
   initialValue: string;
   rowIndex: number;
   columnID: string;
@@ -22,7 +22,7 @@ interface Props {
   tableName: string;
 }
 
-const EditValue: React.FC<Props> = ({
+const EditValue: React.FC<IEditProps> = ({
   initialValue,
   rowIndex,
   columnID,
@@ -77,6 +77,7 @@ const EditValue: React.FC<Props> = ({
     <>
       <form onSubmit={(e) => onSubmit(e)}>
         <input
+          data-testid="edit-value-input"
           autoFocus
           value={record}
           onBlur={(e) => onSubmit(e)}
@@ -84,7 +85,7 @@ const EditValue: React.FC<Props> = ({
           size={4}
           style={{ width: width + 0.5 + "ch" }}
         />{" "}
-        <span>/ {readOnlyPercentage}</span>
+        <span data-testid="read-only-percentage">/ {readOnlyPercentage}</span>
       </form>
 
       <small hidden={!isInvalid} className="text-xs">
