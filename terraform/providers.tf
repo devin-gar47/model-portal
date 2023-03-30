@@ -1,4 +1,10 @@
 terraform {
+  backend "remote" {
+    organization = "looney-develops"
+    workspaces {
+      name = "model-portal"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
