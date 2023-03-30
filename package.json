@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "npx prettier --write .",
+    "format": "npx prettier --write . && npm run format:terraform",
+    "format:terraform": "cd terraform && terraform fmt",
     "check-format": "npx prettier --check .",
     "test": "jest --coverage --collectCoverageFrom=**/**/*.tsx",
     "prepare": "husky install"
