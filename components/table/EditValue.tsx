@@ -75,7 +75,7 @@ const EditValue: React.FC<IEditProps> = ({
 
   return (
     <>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form data-testid="edit-value-form" onSubmit={(e) => onSubmit(e)}>
         <input
           data-testid="edit-value-input"
           autoFocus
@@ -88,7 +88,11 @@ const EditValue: React.FC<IEditProps> = ({
         <span data-testid="read-only-percentage">/ {readOnlyPercentage}</span>
       </form>
 
-      <small hidden={!isInvalid} className="text-xs">
+      <small
+        data-testid="invalid-input-error-message"
+        hidden={!isInvalid}
+        className="text-xs"
+      >
         Valid input must be in the form: 0-0
       </small>
     </>
