@@ -4,6 +4,7 @@ terraform {
     workspaces {
       name = "model-portal"
     }
+    
   }
   required_providers {
     aws = {
