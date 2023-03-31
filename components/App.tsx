@@ -166,7 +166,7 @@ const App: React.FC = () => {
     return (
       <div className="flex flex-col">
         <nav className="flex justify-between p-2 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg">
-          <h2 className="text-xl">Model Project</h2>
+          <h2 className="text-xl">Model Project Is Here!</h2>
 
           <div>
             <span>Baseball</span> <span>Football</span>
