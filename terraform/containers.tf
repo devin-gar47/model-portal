@@ -25,7 +25,7 @@ resource "aws_iam_role_policy_attachment" "execution_role_policy_attachment" {
 }
 
 resource "aws_ecr_repository" "portal_repo" {
-  name_prefix         = "${var.project_name}-portal"
+  name_prefix  = "${var.project_name}-portal"
   force_delete = true
 }
 
