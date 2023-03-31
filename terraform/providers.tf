@@ -2,7 +2,7 @@ terraform {
   backend "remote" {
     organization = "looney-develops"
     workspaces {
-      name = "model-portal-v2"
+      name = "model-portal"
     }
   }
   required_providers {
